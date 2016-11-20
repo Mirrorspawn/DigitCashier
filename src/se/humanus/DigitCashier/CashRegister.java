@@ -2,11 +2,11 @@ package se.humanus.DigitCashier;
 import java.util.*;
 
 public class CashRegister {
-	List<Item> itemList = new ArrayList<>();
-	Scanner scan = new Scanner(System.in);
+	static List<Item> itemList = new ArrayList<>();
+		
 	
-	public CashRegister() {
-		//Hardcoded creation of items when the CashRegister object is created
+	public static void initializeItems() {
+		//Hardcoded creation of items. This is called from the Main method in the Login Class /JS
 		
 		itemList.add(new Item(1,"Standardmjölk, 1l", 9.10f));
 		itemList.add(new Item(2,"Creme Fraiche 34%, 5dl", 19.95f));
@@ -28,7 +28,21 @@ public class CashRegister {
 		itemList.add(new Item(18,"Kaffefilter 1x4 blekta, 80st", 18.50f));
 		itemList.add(new Item(19,"Godmorgon Apelsinjuice, 1L", 19.95f));
 		itemList.add(new Item(20,"Kaffe Skånerost, 450g", 34.50f));
+		
+		//The call below is only used to check that the above list of objects have been created correctly.
+		//It, and the method it calls, are commented out when I don't want to use them. Will be removed for the final
+		//version of the application.
+		//checkInitialize();
 				
 	}
 
-}
+
+	//private static void checkInitialize() {
+	//	for(int i=0;i<itemList.size();i++) {
+	//		System.out.println(itemList.get(i).toString());
+	//		}
+	//	} 
+		
+	}
+
+

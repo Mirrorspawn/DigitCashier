@@ -25,7 +25,7 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		//returns information about the item in String format
+		//returns information about the item in String format. Needs to be changed to give the price with double decimals.
 		return idNr + " " + name + " " + price;
 		}
 	
