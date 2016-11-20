@@ -7,19 +7,19 @@ public class Item {
 	private float price; // the price of the iteem
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
 	
-	public float getPrice () {
+	public float getPrice() {
 		return this.price;
 		}
 	
-	public int getId () {
+	public int getId() {
 		return this.idNr;
 		}
 	
-	public String getName () {
+	public String getName() {
 		return this.name;
 		}
 	
-	public double getDiscount () {
+	public double getDiscount() {
 		return this.discountModifier;
 		}
 	

@@ -3,6 +3,7 @@ import java.util.*;
 
 public class CashRegister {
 	static List<Item> itemList = new ArrayList<>();
+	static List<Item> saleItemList = new ArrayList<>();
 		
 	
 	public static void initializeItems() {
@@ -36,13 +37,31 @@ public class CashRegister {
 				
 	}
 
-
 	//private static void checkInitialize() {
 	//	for(int i=0;i<itemList.size();i++) {
 	//		System.out.println(itemList.get(i).toString());
 	//		}
 	//	} 
-		
+	
+	public static void addItemToSale(int itemID){
+		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. 
+		saleItemList.add(itemList.get(itemID-1));		
+	}
+	
+	public static String getSaleItemName(int nrInSale) {
+		//returns the name of a specific item registered to the current sale. nrInSale marks where in the order of the sale the 
+		//item was added. If you want the name of the first item registered during the current sale, nrInSale should be 1.
+		String name = saleItemList.get(nrInSale-1).getName();
+		return name;
+	}
+	
+	public static float getSaleItemPrice(int nrInSale) {
+		//returns the price of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
+		//item was added. If you want the price of the first item registered during the current sale, nrInSale should be 2.
+		float price = itemList.get(nrInSale-1).getPrice();
+		return price;
+	}
+	
 	}
 
 
