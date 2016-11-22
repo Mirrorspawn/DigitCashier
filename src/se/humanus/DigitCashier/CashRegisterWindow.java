@@ -3,6 +3,10 @@ package se.humanus.DigitCashier;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import java.util.regex.Pattern;
+import java.util.*;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Button;
@@ -81,13 +85,18 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				
-				System.out.println("Button Pressed.");
+				System.out.println("Button Pressed."); //testline to see that buttonpress is detected. Remove from final code.
 				String inputString = varuNrText.getText();
+				
+				if (!inputString.matches("[0-9]{1,2}")) {
+					lblDisplay.setText("Ogiltig input.");
+					return;
+				}
 				int itemNr = Integer.parseInt(inputString);
-				System.out.println(itemNr);
+				System.out.println(itemNr); //testline to see what number has been detected. Remove from final code.
 				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
 				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
-					lblDisplay.setText("Ogiltigt Varunummer.");					
+					lblDisplay.setText("Varunummer finns ej.");					
 				}
 				else {
 					lblDisplay.setText("");
