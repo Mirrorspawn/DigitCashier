@@ -8,12 +8,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 
 public class CashRegisterWindow {
 
 	protected Shell shlDigitcashierCashRegister;
-	private Text text;
-	private Text text_1;
+	private Text antalText;
+	private Text varuNrText;
 
 	/**
 	 * Launch the application.
@@ -52,11 +54,17 @@ public class CashRegisterWindow {
 		shlDigitcashierCashRegister.setSize(546, 183);
 		shlDigitcashierCashRegister.setText("DigitCashier Cash Register");
 		
-		text = new Text(shlDigitcashierCashRegister, SWT.BORDER);
-		text.setBounds(11, 44, 35, 25);
+		Label lblDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
+		lblDisplay.setAlignment(SWT.CENTER);
+		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
+		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		lblDisplay.setBounds(194, 43, 316, 25);
 		
-		text_1 = new Text(shlDigitcashierCashRegister, SWT.BORDER);
-		text_1.setBounds(52, 44, 55, 25);
+		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
+		antalText.setBounds(11, 44, 35, 25);
+		
+		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
+		varuNrText.setBounds(52, 44, 55, 25);
 		
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblAntal.setBounds(10, 23, 35, 15);
@@ -67,14 +75,24 @@ public class CashRegisterWindow {
 		lblVarunr.setText("VaruNr");
 		
 		Button btnEnter = new Button(shlDigitcashierCashRegister, SWT.NONE);
+		btnEnter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				System.out.println("Button Pressed.");
+				String inputString = varuNrText.getText();
+				int itemNr = Integer.parseInt(inputString);
+				System.out.println(itemNr);
+				if (itemNr<1||itemNr>99) {
+					lblDisplay.setText("Ogiltigt Varunummer.");					
+				}
+				else {
+					CashRegister.addItemToSale(itemNr);
+					System.out.println("Added item " + itemNr);
+				}
+			}
+		});
 		btnEnter.setBounds(113, 44, 75, 25);
 		btnEnter.setText("Enter");
-		
-		Label lblDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
-		lblDisplay.setAlignment(SWT.CENTER);
-		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
-		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblDisplay.setBounds(194, 43, 316, 25);
 		
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblNewLabel_1.setBounds(194, 23, 84, 21);
