@@ -101,7 +101,10 @@ public class CashRegisterWindow {
 				else {
 					lblDisplay.setText("");
 					CashRegister.addItemToSale(itemNr);
-					System.out.println("Added item " + itemNr);
+					System.out.println("Added item " + itemNr);//Testline to see that this has worked. Remove from final code.
+					String itemAdded = (CashRegister.getLatestItem()).toString();
+					System.out.println(itemAdded);//testline. Remove from final code
+					lblDisplay.setText(itemAdded);
 				}
 			}
 		});

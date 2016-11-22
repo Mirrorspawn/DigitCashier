@@ -49,6 +49,15 @@ public class CashRegister {
 		return i;
 	}
 	
+	public static int getLengthOfSaleItemList() {
+		int i = saleItemList.size();
+		return i;
+	}
+	
+	public static Item getLatestItem() {
+		return saleItemList.get(getLengthOfSaleItemList()-1);
+	}
+	
 	public static void addItemToSale(int itemID){
 		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. 
 		saleItemList.add(itemList.get(itemID-1));		
@@ -64,7 +73,7 @@ public class CashRegister {
 	public static float getSaleItemPrice(int nrInSale) {
 		//returns the price of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
 		//item was added. If you want the price of the first item registered during the current sale, nrInSale should be 2.
-		float price = itemList.get(nrInSale-1).getPrice();
+		float price = saleItemList.get(nrInSale-1).getPrice();
 		return price;
 	}
 	
