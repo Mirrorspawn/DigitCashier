@@ -10,6 +10,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.VerifyListener;
+import org.eclipse.swt.events.VerifyEvent;
 
 public class CashRegisterWindow {
 
@@ -63,7 +65,7 @@ public class CashRegisterWindow {
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
 		antalText.setBounds(11, 44, 35, 25);
 		
-		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
+		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER | SWT.RIGHT);
 		varuNrText.setBounds(52, 44, 55, 25);
 		
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
@@ -78,14 +80,17 @@ public class CashRegisterWindow {
 		btnEnter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
+				
 				System.out.println("Button Pressed.");
 				String inputString = varuNrText.getText();
 				int itemNr = Integer.parseInt(inputString);
 				System.out.println(itemNr);
-				if (itemNr<1||itemNr>99) {
+				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
+				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
 					lblDisplay.setText("Ogiltigt Varunummer.");					
 				}
 				else {
+					lblDisplay.setText("");
 					CashRegister.addItemToSale(itemNr);
 					System.out.println("Added item " + itemNr);
 				}

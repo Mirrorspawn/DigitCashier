@@ -41,7 +41,13 @@ public class CashRegister {
 	//	for(int i=0;i<itemList.size();i++) {
 	//		System.out.println(itemList.get(i).toString());
 	//		}
-	//	} 
+	//	}
+	
+	public static int getLengthOfItemList() {
+		//Returns the number of items in itemList (the list of products that can be sold)
+		int i = itemList.size();
+		return i;
+	}
 	
 	public static void addItemToSale(int itemID){
 		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. 
@@ -61,6 +67,7 @@ public class CashRegister {
 		float price = itemList.get(nrInSale-1).getPrice();
 		return price;
 	}
+	
 	
 	}
 
