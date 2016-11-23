@@ -1,5 +1,7 @@
 package se.humanus.DigitCashier;
 
+import java.text.DecimalFormat;
+
 public class Item {
 	//Class to handle items for purchase. /JS
 	private int idNr; // unique identifying two-digit number
@@ -26,7 +28,10 @@ public class Item {
 	@Override
 	public String toString() {
 		//returns information about the item in String format. Needs to be changed to give the price with double decimals.
-		return idNr + " " + name + " " + price;
+		DecimalFormat df = new DecimalFormat();
+		df.setMinimumFractionDigits(2);
+		df.setMaximumFractionDigits(2);
+		return name + " " + df.format(price);
 		}
 	
 	public Item (int idNr, String name, float price) {
