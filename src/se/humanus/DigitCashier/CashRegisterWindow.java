@@ -9,6 +9,7 @@ import java.util.*;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -115,9 +116,17 @@ public class CashRegisterWindow {
 		lblNewLabel_1.setBounds(194, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
 		
-		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE);
+		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment
 		btnKpKlart.setBounds(113, 75, 75, 25);
 		btnKpKlart.setText("K\u00F6p Klart");
-
+		btnKpKlart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				MessageBox paymentBox = new MessageBox(shlDigitcashierCashRegister); //Pop-up confirming payment succeeded
+				paymentBox.setText("Payment confirmation");
+				paymentBox.setMessage("Payment confirmed!");
+				paymentBox.open();
+			}
+		});
 	}
 }
