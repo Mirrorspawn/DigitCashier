@@ -3,6 +3,7 @@ package se.humanus.DigitCashier;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.ToolItem;
 
 import java.util.regex.Pattern;
 import java.util.*;
@@ -11,12 +12,16 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.VerifyListener;
-import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Menu;
 
 public class CashRegisterWindow {
 
@@ -58,7 +63,7 @@ public class CashRegisterWindow {
 	 */
 	protected void createContents() {
 		shlDigitcashierCashRegister = new Shell();
-		shlDigitcashierCashRegister.setSize(546, 183);
+		shlDigitcashierCashRegister.setSize(546, 364);
 		shlDigitcashierCashRegister.setText("DigitCashier Cash Register");
 		
 		Label lblDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
@@ -123,18 +128,31 @@ public class CashRegisterWindow {
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblNewLabel_1.setBounds(194, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
-		
-		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment
-		btnKpKlart.setBounds(113, 75, 75, 25);
+					
+		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
+		btnKpKlart.setBounds(113, 94, 75, 25);
 		btnKpKlart.setText("K\u00F6p Klart");
+		
+		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
+		betalningsmedel.setItems(new String[] {"Kort", "Kontant", "Present"});
+		betalningsmedel.setBounds(11, 96, 91, 23);
+		betalningsmedel.select(0);
+		betalningsmedel.setText("Betalningsmedel");
+		
+		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE);
+		lblBetalningsmedel.setText("Betalningsmedel");
+		lblBetalningsmedel.setBounds(11, 75, 96, 15);
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
-				MessageBox paymentBox = new MessageBox(shlDigitcashierCashRegister); //Pop-up confirming payment succeeded
+				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
+				
+				/*MessageBox paymentBox = new MessageBox(shlDigitcashierCashRegister); //Pop-up confirming payment succeeded - replaced with message in display, remove this if it works for everyone SH
 				paymentBox.setText("Payment confirmation");
 				paymentBox.setMessage("Payment confirmed!");
-				paymentBox.open();
+				paymentBox.open();*/
 			}
 		});
+		
 	}
 }
