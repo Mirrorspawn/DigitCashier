@@ -4,6 +4,7 @@ import java.util.*;
 public class CashRegister {
 	static List<Item> itemList = new ArrayList<>();
 	static List<Item> saleItemList = new ArrayList<>();
+	static List<Float> amountOfItemList = new ArrayList<>();
 		
 	
 	public static void initializeItems() {
@@ -44,7 +45,7 @@ public class CashRegister {
 	//	}
 	
 	public static int getLengthOfItemList() {
-		//Returns the number of items in itemList (the list of products that can be sold)
+		//Returns the number of items in itemList (the list of products that can be sold) /JS
 		int i = itemList.size();
 		return i;
 	}
@@ -58,23 +59,31 @@ public class CashRegister {
 		return saleItemList.get(getLengthOfSaleItemList()-1);
 	}
 	
-	public static void addItemToSale(int itemID){
-		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. 
-		saleItemList.add(itemList.get(itemID-1));		
+	public static void addItemToSale(float amountOfItem, int itemID){
+		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. //JS
+		saleItemList.add(itemList.get(itemID-1));
+		amountOfItemList.add(amountOfItem);
 	}
 	
 	public static String getSaleItemName(int nrInSale) {
 		//returns the name of a specific item registered to the current sale. nrInSale marks where in the order of the sale the 
-		//item was added. If you want the name of the first item registered during the current sale, nrInSale should be 1.
+		//item was added. If you want the name of the first item registered during the current sale, nrInSale should be 1. /JS
 		String name = saleItemList.get(nrInSale-1).getName();
 		return name;
 	}
 	
 	public static float getSaleItemPrice(int nrInSale) {
 		//returns the price of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
-		//item was added. If you want the price of the first item registered during the current sale, nrInSale should be 2.
+		//item was added. If you want the price of the first item registered during the current sale, nrInSale should be 1. /JS
 		float price = saleItemList.get(nrInSale-1).getPrice();
 		return price;
+	}
+	
+	public static float getSaleItemAmount (int nrInSale) {
+		//returns the amount of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
+		//item was added. If you want the amount of the first item registered during the current sale, nrInSale should be 1. /JS
+		float amount = amountOfItemList.get(nrInSale-1);
+		return amount;
 	}
 	
 	

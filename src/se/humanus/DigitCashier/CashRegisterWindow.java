@@ -87,13 +87,21 @@ public class CashRegisterWindow {
 			public void mouseDown(MouseEvent e) {
 				
 				System.out.println("Button Pressed."); //testline to see that buttonpress is detected. Remove from final code.
-				String inputString = varuNrText.getText();
+				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
+				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
+				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
 				
+				if (!antalString.matches(antalMatch)) {
+					lblDisplay.setText("Ogiltig mängd/vikt");
+					return;
+				}
 				if (!inputString.matches("[0-9]{1,2}")) {
 					lblDisplay.setText("Ogiltig input.");
 					return;
 				}
-				int itemNr = Integer.parseInt(inputString);
+				
+				int itemNr = Integer.parseInt(inputString); //converts itemNr to an Integer
+				float amountOfItem = Float.parseFloat(antalString);//converts amountOfItem to a float value
 				System.out.println(itemNr); //testline to see what number has been detected. Remove from final code.
 				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
 				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
@@ -101,11 +109,11 @@ public class CashRegisterWindow {
 				}
 				else {
 					lblDisplay.setText("");
-					CashRegister.addItemToSale(itemNr);
-					System.out.println("Added item " + itemNr);//Testline to see that this has worked. Remove from final code.
+					CashRegister.addItemToSale(amountOfItem,itemNr);
+					System.out.println("Added " + amountOfItem + " of item " + itemNr);//Testline to see that this has worked. Remove from final code.
 					String itemAdded = (CashRegister.getLatestItem()).toString();
 					System.out.println(itemAdded);//testline. Remove from final code
-					lblDisplay.setText(itemAdded);
+					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
 				}
 			}
 		});

@@ -31,7 +31,7 @@ public class Item {
 		DecimalFormat df = new DecimalFormat();
 		df.setMinimumFractionDigits(2);
 		df.setMaximumFractionDigits(2);
-		return name + " " + df.format(price);
+		return name + " á " + df.format(price)+"kr";
 		}
 	
 	public Item (int idNr, String name, float price) {
