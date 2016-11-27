@@ -44,6 +44,19 @@ public class CashRegister {
 	//		}
 	//	}
 	
+	
+	
+
+	public static float CashRegister;{ // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
+	}
+
+	float totalPrice = 0; {
+	for(Item item : itemList)
+		totalPrice += item.getPrice();
+	}
+	
+	
+	
 	public static int getLengthOfItemList() {
 		//Returns the number of items in itemList (the list of products that can be sold) /JS
 		int i = itemList.size();
