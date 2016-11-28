@@ -5,8 +5,30 @@ public class CashRegister {
 	static List<Item> itemList = new ArrayList<>();
 	static List<Item> saleItemList = new ArrayList<>();
 	static List<Float> amountOfItemList = new ArrayList<>();
+	static String discount_20p = "20% rabatt";
+	static String discount_50kr = "-50kr";
+	static String discount = "";
 		
 	
+	public static String getDiscount() {
+		return discount;
+	}
+
+	public static void setDiscount(String discount) {
+		CashRegister.discount = discount;
+	}
+
+	public static float applyDiscount(String discount, float sum) {
+		float result = sum;
+		if(discount.equals(discount_50kr)) {
+			result = sum -50;
+		}
+		if(discount.equals(discount_20p)) {
+			result = (float) (sum *0.8);
+		}
+		
+		return result;
+	}
 	public static void initializeItems() {
 		//Hardcoded creation of items. This is called from the Main method in the Login Class /JS
 		
@@ -98,6 +120,7 @@ public class CashRegister {
 		float amount = amountOfItemList.get(nrInSale-1);
 		return amount;
 	}
+	
 	
 	
 	}
