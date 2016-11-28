@@ -128,20 +128,20 @@ public class CashRegisterWindow {
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblNewLabel_1.setBounds(194, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
-					
-		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
-		btnKpKlart.setBounds(113, 94, 75, 25);
-		btnKpKlart.setText("K\u00F6p Klart");
 		
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
 		betalningsmedel.setItems(new String[] {"Kort", "Kontant", "Present"});
-		betalningsmedel.setBounds(11, 96, 91, 23);
+		betalningsmedel.setBounds(11, 162, 91, 23);
 		betalningsmedel.select(0);
 		betalningsmedel.setText("Betalningsmedel");
 		
 		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblBetalningsmedel.setText("Betalningsmedel");
-		lblBetalningsmedel.setBounds(11, 75, 96, 15);
+		lblBetalningsmedel.setBounds(11, 141, 96, 15);
+					
+		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
+		btnKpKlart.setBounds(113, 160, 75, 25);
+		btnKpKlart.setText("K\u00F6p Klart");
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -154,5 +154,29 @@ public class CashRegisterWindow {
 			}
 		});
 		
-	}
+		
+		
+		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount
+		lblRabbater.setText("Rabatter");
+		lblRabbater.setBounds(11, 87, 96, 15);
+		
+		Combo discountlist = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY);
+		discountlist.setItems(new String[] {CashRegister.discount_20p, CashRegister.discount_50kr});
+		discountlist.setBounds(11, 108, 91, 23);
+		discountlist.setText("Rabatter");
+		discountlist.select(0);
+		
+		Button rabbutton = new Button(shlDigitcashierCashRegister, SWT.NONE);
+		rabbutton.setBounds(113, 108, 75, 25);
+		rabbutton.setText("Apply");
+		rabbutton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				float result = CashRegister.applyDiscount(discountlist.getText(), 1234f);  //1234f temporary value for sum of items, this is what the discount is applied to
+				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr");
+				
+				
+			}
+		});
+	}	
 }
