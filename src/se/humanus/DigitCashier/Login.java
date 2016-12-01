@@ -6,7 +6,7 @@ public class Login {
 
 	public static void main(String[] args) {
 		
-Scanner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		
 		String user="", pass="", EmployeeID="";
 		
@@ -20,10 +20,6 @@ Scanner input = new Scanner(System.in);
 		
 		if (user.equals("Kassör") || (user.equals("Admin") || (user.equals("Chef"))))
 			validName=true;
-			
-		
-		
-		
 		
 		else {
 			
@@ -86,6 +82,7 @@ Scanner input = new Scanner(System.in);
 		 * Any login code should probably be before that call. Any call to a method that needs to use the 
 		 *the hardcode-created Items should be put after it /JS 		
 		 */
+		//CashRegister.initializeCategories(); // This is a call to a method in Cashregister that creates some objects of the class ItemCategory./JS
 		CashRegister.initializeItems(); //This is a call to a method in CashRegister that creates twenty objects of the class Item./JS
 		CashRegisterWindow.activateCashRegister(); //Starts up the CashRegister interface.
 

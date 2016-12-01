@@ -74,6 +74,7 @@ public class CashRegisterWindow {
 		
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
 		antalText.setBounds(11, 44, 35, 25);
+		antalText.setText("1");
 		
 		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER | SWT.RIGHT);
 		varuNrText.setBounds(52, 44, 55, 25);

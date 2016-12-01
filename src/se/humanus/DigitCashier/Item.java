@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class Item {
 	//Class to handle items for purchase. /JS
-	private int idNr; // unique identifying two-digit number
+	private String idNr; // unique identifying two-digit number
 	private String name; // the name of the item
 	private float price; // the price of the iteem
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
@@ -13,7 +13,7 @@ public class Item {
 		return this.price;
 		}
 	
-	public int getId() {
+	public String getId() {
 		return this.idNr;
 		}
 	
@@ -34,7 +34,7 @@ public class Item {
 		return name + " á " + df.format(price)+"kr";
 		}
 	
-	public Item (int idNr, String name, float price) {
+	public Item (String idNr, String name, float price) {
 		//Standard constructor method, does not set discount modifier
 		this.idNr = idNr;
 		this.name = name;
