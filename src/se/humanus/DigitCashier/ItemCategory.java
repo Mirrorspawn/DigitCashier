@@ -17,8 +17,18 @@ public class ItemCategory {
 		return salesTaxMod;
 	}
 	
+	public Boolean getMeasuredInWeight() {
+		return measuredInWeight;
+	}
+	
 	public void addItemToCategory(Item item) {
 		itemsInCategory.add(item);		
+	}
+	
+	public void removeItemFromCategory(Item item) { //Not tested. Removes an item from the category's list of items.
+		if(itemsInCategory.contains(item)) {
+			itemsInCategory.remove(itemsInCategory.indexOf(item));
+		}
 	}
 	
 	public boolean isItemInCategory(Item item) {

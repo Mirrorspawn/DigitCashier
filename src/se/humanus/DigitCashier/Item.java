@@ -8,34 +8,46 @@ public class Item {
 	private String name; // the name of the item
 	private float price; // the price of the iteem
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
+	private ItemCategory myCategory; //The category this item belongs to
+	
+	public void assignToCategory(ItemCategory ic) { //Not yet tested, but should work. Not needed until we do adminstuff
+		myCategory.removeItemFromCategory(this);
+		ic.addItemToCategory(this);
+		myCategory = ic;
+		}
 	
 	public float getPrice() {
-		return this.price;
+		return price;
 		}
 	
 	public String getId() {
-		return this.idNr;
+		return idNr;
 		}
 	
 	public String getName() {
-		return this.name;
+		return name;
 		}
 	
 	public double getDiscount() {
-		return this.discountModifier;
+		return discountModifier;
+		}
+	
+	public ItemCategory getMyCategory() {
+		return myCategory;
 		}
 	
 	@Override
 	public String toString() {
-		//returns information about the item in String format. Needs to be changed to give the price with double decimals.
+		//returns information about the item in String format.
 		DecimalFormat df = new DecimalFormat();
 		df.setMinimumFractionDigits(2);
 		df.setMaximumFractionDigits(2);
 		return name + " á " + df.format(price)+"kr";
 		}
 	
-	public Item (String idNr, String name, float price) {
+	public Item (ItemCategory ic, String idNr, String name, float price) {
 		//Standard constructor method, does not set discount modifier
+		this.myCategory = ic;
 		this.idNr = idNr;
 		this.name = name;
 		this.price = price;

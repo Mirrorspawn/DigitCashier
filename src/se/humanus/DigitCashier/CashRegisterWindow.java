@@ -22,6 +22,8 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.ModifyEvent;
 
 public class CashRegisterWindow {
 
@@ -64,29 +66,49 @@ public class CashRegisterWindow {
 	 */
 	protected void createContents() {
 		shlDigitcashierCashRegister = new Shell();
-		shlDigitcashierCashRegister.setSize(546, 364);
+		shlDigitcashierCashRegister.setSize(610, 364);
 		shlDigitcashierCashRegister.setText("DigitCashier Cash Register");
 		
 		Label lblDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
 		lblDisplay.setAlignment(SWT.CENTER);
 		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
 		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblDisplay.setBounds(194, 43, 316, 25);
+		lblDisplay.setBounds(220, 43, 316, 25);
+		
+		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
+		lblAntal.setBounds(10, 23, 62, 15);
+		lblAntal.setText("Antal/Vikt");
+		
+		Label lblVarunr = new Label(shlDigitcashierCashRegister, SWT.NONE);
+		lblVarunr.setBounds(78, 23, 55, 15);
+		lblVarunr.setText("VaruNr");
 		
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
 		antalText.setBounds(11, 44, 35, 25);
 		antalText.setText("1");
 		
 		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER | SWT.RIGHT);
-		varuNrText.setBounds(52, 44, 55, 25);
-		
-		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblAntal.setBounds(10, 23, 35, 15);
-		lblAntal.setText("Antal");
-		
-		Label lblVarunr = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblVarunr.setBounds(52, 23, 55, 15);
-		lblVarunr.setText("VaruNr");
+		varuNrText.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				String testString = varuNrText.getText();
+				
+				if (testString.matches("[0-9]{2}")) { //Kollar om det är exakt två siffror i VaruNr
+					int itemNr = Integer.parseInt(testString); //Omvandlar strängen från VaruNr till Integer
+					if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
+						lblAntal.setText("Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+					}
+					else {
+							lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret						
+					}
+				}
+				else {
+					lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+				}	
+			}
+				
+
+		});
+		varuNrText.setBounds(78, 44, 55, 25);
 		
 		Button btnEnter = new Button(shlDigitcashierCashRegister, SWT.NONE);
 		btnEnter.addMouseListener(new MouseAdapter() {
@@ -122,15 +144,16 @@ public class CashRegisterWindow {
 					System.out.println(itemAdded);//testline. Remove from final code
 					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
 				}
-				antalText.setText("1");
-				varuNrText.setText(defaultAntal);
+				antalText.setText(defaultAntal);
+				varuNrText.setText("");
+				lblAntal.setText("Antal/Viktb");
 			}
 		});
-		btnEnter.setBounds(113, 44, 75, 25);
+		btnEnter.setBounds(139, 44, 75, 25);
 		btnEnter.setText("Enter");
 		
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblNewLabel_1.setBounds(194, 23, 84, 21);
+		lblNewLabel_1.setBounds(220, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
 		
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
