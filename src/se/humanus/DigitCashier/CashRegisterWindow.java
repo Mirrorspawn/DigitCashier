@@ -28,6 +28,7 @@ public class CashRegisterWindow {
 	protected Shell shlDigitcashierCashRegister;
 	private Text antalText;
 	private Text varuNrText;
+	private String defaultAntal="1";
 
 	/**
 	 * Launch the application.
@@ -101,8 +102,8 @@ public class CashRegisterWindow {
 					lblDisplay.setText("Ogiltig mängd/vikt");
 					return;
 				}
-				if (!inputString.matches("[0-9]{1,2}")) {
-					lblDisplay.setText("Ogiltig input.");
+				if (!inputString.matches("[0-9]{2}")) {
+					lblDisplay.setText("Ogiltig input. VaruNr skall bestå av två siffror.");
 					return;
 				}
 				
@@ -121,6 +122,8 @@ public class CashRegisterWindow {
 					System.out.println(itemAdded);//testline. Remove from final code
 					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
 				}
+				antalText.setText("1");
+				varuNrText.setText(defaultAntal);
 			}
 		});
 		btnEnter.setBounds(113, 44, 75, 25);
