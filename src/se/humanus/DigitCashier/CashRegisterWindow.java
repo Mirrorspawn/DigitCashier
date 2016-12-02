@@ -96,6 +96,9 @@ public class CashRegisterWindow {
 				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
 				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
 				
+				//Check for #2# here
+				
+				
 				if (!antalString.matches(antalMatch)) {
 					lblDisplay.setText("Ogiltig mängd/vikt");
 					return;
