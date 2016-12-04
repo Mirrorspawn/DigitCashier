@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+//import com.sun.xml.internal.ws.util.StringUtils;  //This import gave me an error message. The application works without it. What is it used for?
 
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
