@@ -118,7 +118,7 @@ public class CashRegisterWindow {
 		Button btnEnter = new Button(shlDigitcashierCashRegister, SWT.NONE);
 		btnEnter.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseDown(MouseEvent e) {}
+			public void mouseDown(MouseEvent e) {
 
 				System.out.println("Button Pressed."); //testline to see that buttonpress is detected. Remove from final code.
 				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
@@ -126,16 +126,22 @@ public class CashRegisterWindow {
 				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
 				
 			
-				public static float showFinalSum;{
-					component.getInputMap().put(KeyStroke.getKeyStroke("#2#"),
-			                "amountOfItemList");
-			component.getActionMap().put("amountOfItemList",
-			                 anAction);
-
-					}
+//				public static float showFinalSum {
+//					component.getInputMap().put(KeyStroke.getKeyStroke("#2#"),
+//			                "amountOfItemList");
+//			component.getActionMap().put("amountOfItemList",
+//			                 anAction);
+//
+//					}
 				
-				
-				
+				if(inputString.equals("#2#")) {
+					System.out.println("show total items here..");
+					double sum = CashRegister.calculateSum();
+					int a = (int) (sum * 100);
+					sum = a / 100.0;
+					lblDisplay.setText("total sum = " + sum);
+					return;
+				}
 				if (!antalString.matches(antalMatch)) {
 					lblDisplay.setText("Ogiltig mängd/vikt");
 					return;
