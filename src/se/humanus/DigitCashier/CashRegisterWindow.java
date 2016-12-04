@@ -124,7 +124,19 @@ public class CashRegisterWindow {
 				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
 				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
 				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
-
+				
+		
+				
+				if(inputString.equals("#2#")) { // Code for the #2# function. AF
+					System.out.println("show total items here..");
+					double sum = CashRegister.calculateSum();
+					int a = (int) (sum * 100); // Code to limit the decimal numbers to 2. Code by my brother
+					sum = a / 100.0;
+					lblDisplay.setText("total sum = " + sum);
+					return;
+				
+				
+				}
 				if (!antalString.matches(antalMatch)) {
 					lblDisplay.setText("Ogiltig mängd/vikt");
 					return;

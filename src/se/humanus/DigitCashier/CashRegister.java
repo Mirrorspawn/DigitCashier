@@ -114,12 +114,14 @@ public class CashRegister {
 
 	public static float calculateSum() { // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
 		float totalPrice = 0;
-		for(Item item : itemList){ 
+
+		for(Item item : saleItemList){ 
+		totalPrice += item.getPrice();
 			totalPrice += item.getPrice();
 		}
 		return totalPrice;
 	}
-
+	
 
 
 	public static int getLengthOfItemList() {
