@@ -117,7 +117,6 @@ public class CashRegister {
 
 		for(Item item : saleItemList){ 
 		totalPrice += item.getPrice();
-			totalPrice += item.getPrice();
 		}
 		return totalPrice;
 	}
