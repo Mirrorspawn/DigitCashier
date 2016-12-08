@@ -13,17 +13,8 @@ public class CashRegister {
 	static String discount_50kr = "-50kr";
 	static String discount = "";
 	static String change = "";
-	static float total = 0;
 
 
-
-	public static float getTotal() {
-		return total;
-	}
-
-	public static void setTotal(float total) {
-		CashRegister.total = total;
-	}
 
 	public static String getDiscount() {
 		return discount;
@@ -112,12 +103,10 @@ public class CashRegister {
 		//checkInitialize();
 
 	}
-
+	
 	private static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
-		Receipt.setDiscount(0);
-
 	}
 
 	//private static void checkInitialize() {
@@ -128,18 +117,33 @@ public class CashRegister {
 
 
 
-
+/*
 	public static float calculateSum() { // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
 		float totalPrice = 0;
 
 		for(Item item : saleItemList){ 
-			totalPrice += item.getPrice();
+		totalPrice += item.getPrice();
 		}
-
-		return roundCash(totalPrice);
+		return totalPrice;
 	}
-
-
+	*/
+	
+	
+	public static float calculateSum(){
+	    float totalPrice = 0;
+	    float amount = 1f;
+	
+	    for(int i = 0; i < getLengthOfSaleItemList(); i++) {
+	    amount = amountOfItemList.get(i);{
+		totalPrice = totalPrice + (amount*saleItemList.get(i).getPrice());
+	    }
+	    }
+		return totalPrice;
+	}
+	    
+	    
+		
+		
 
 	public static int getLengthOfItemList() {
 		//Returns the number of items in itemList (the list of products that can be sold) /JS
@@ -189,20 +193,11 @@ public class CashRegister {
 		return amount;
 	}
 
-	public static float getTotalVAT() {	
-		float vat = roundCash(getTotal() * 0.25f);
-		return vat;
-	}
 
-	private static float roundCash(float f) {
-		int a = (int) (f * 100); // Code to limit the decimal numbers to 2. Code by my brother
-		f = a / 100.0f;
-
-		return f;
+		
 	}
 
 
 
-}
 
 
