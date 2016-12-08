@@ -37,11 +37,7 @@ public class CashRegisterWindow {
 	private Text changeInput;
 	private float total = 1234f; //Temporary total amount of selected wares, replace with Awe's sum code later
 
-	/**
-	 * Launch the application.
-	 * @param args
-	 * @wbp.parser.entryPoint
-	 */
+
 	public static void activateCashRegister() {
 		try {
 			CashRegisterWindow window = new CashRegisterWindow();
@@ -195,6 +191,8 @@ public class CashRegisterWindow {
 				paymentBox.setText("Payment confirmation");
 				paymentBox.setMessage("Payment confirmed!");
 				paymentBox.open();*/
+				Receipt currentReceipt = new Receipt(); //created a new Receipt object
+				currentReceipt.showReceipt(); //shows the receipt window
 			}
 		});
 

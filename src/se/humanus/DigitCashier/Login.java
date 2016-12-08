@@ -3,6 +3,12 @@ package se.humanus.DigitCashier;
 import java.util.Scanner;
 
 public class Login {
+	
+	/**
+	 * Launch the application.
+	 * @param args
+	 * @wbp.parser.entryPoint
+	 */
 
 	public static void main(String[] args) {
 		
@@ -83,7 +89,7 @@ public class Login {
 		 *the hardcode-created Items should be put after it /JS 		
 		 */
 		CashRegister.initializeCategories(); // This is a call to a method in Cashregister that creates some objects of the class ItemCategory./JS
-		CashRegister.initializeItems(); //This is a call to a method in CashRegister that creates twenty objects of the class Item./JS
+		CashRegister.initializeItems(); //This is a call to a method in CashRegister that creates objects of the class Item./JS
 		CashRegisterWindow.activateCashRegister(); //Starts up the CashRegister interface.
 
 	}

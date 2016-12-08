@@ -4,6 +4,7 @@ import java.text.ParsePosition;
 import java.util.*;
 
 public class CashRegister {
+	static String orgName="Acme Foods", orgNr="5560398800";
 	static List<ItemCategory> categoryList = new ArrayList<>();
 	static List<Item> itemList = new ArrayList<>();
 	static List<Item> saleItemList = new ArrayList<>();
@@ -101,6 +102,11 @@ public class CashRegister {
 		//version of the application.
 		//checkInitialize();
 
+	}
+	
+	private static void initializeReceipt(){ 
+		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
+		Receipt.setOrganization(orgName,orgNr);
 	}
 
 	//private static void checkInitialize() {
