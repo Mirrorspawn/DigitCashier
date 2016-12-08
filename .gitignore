@@ -2,3 +2,4 @@
 *.class
 .classpath
 /bin/
+src/se/humanus/DigitCashier/ChangeCalculator.java

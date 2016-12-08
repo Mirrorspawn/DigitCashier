@@ -71,7 +71,7 @@ public class ReceiptDisplay {
 		
 		Label lblSum = new Label(composite_3, SWT.NONE);
 		lblSum.setBounds(255, 10, 143, 30);
-		lblSum.setText("Total Sum here");
+		lblSum.setText("Total Sum: " +CashRegister.getTotal()+ "SEK\nVAT (25%): "+CashRegister.getTotalVAT()+"SEK");
 
 		shlKvitto.open();
 		shlKvitto.layout();

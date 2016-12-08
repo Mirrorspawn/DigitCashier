@@ -13,8 +13,17 @@ public class CashRegister {
 	static String discount_50kr = "-50kr";
 	static String discount = "";
 	static String change = "";
+	static float total = 0;
 
 
+
+	public static float getTotal() {
+		return total;
+	}
+
+	public static void setTotal(float total) {
+		CashRegister.total = total;
+	}
 
 	public static String getDiscount() {
 		return discount;
@@ -103,10 +112,12 @@ public class CashRegister {
 		//checkInitialize();
 
 	}
-	
+
 	private static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
+		Receipt.setDiscount(0);
+
 	}
 
 	//private static void checkInitialize() {
@@ -122,11 +133,12 @@ public class CashRegister {
 		float totalPrice = 0;
 
 		for(Item item : saleItemList){ 
-		totalPrice += item.getPrice();
+			totalPrice += item.getPrice();
 		}
-		return totalPrice;
+
+		return roundCash(totalPrice);
 	}
-	
+
 
 
 	public static int getLengthOfItemList() {
@@ -175,6 +187,18 @@ public class CashRegister {
 		//item was added. If you want the amount of the first item registered during the current sale, nrInSale should be 1. /JS
 		float amount = amountOfItemList.get(nrInSale-1);
 		return amount;
+	}
+
+	public static float getTotalVAT() {	
+		float vat = roundCash(getTotal() * 0.25f);
+		return vat;
+	}
+
+	private static float roundCash(float f) {
+		int a = (int) (f * 100); // Code to limit the decimal numbers to 2. Code by my brother
+		f = a / 100.0f;
+
+		return f;
 	}
 
 

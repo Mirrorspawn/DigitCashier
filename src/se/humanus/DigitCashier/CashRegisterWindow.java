@@ -35,7 +35,6 @@ public class CashRegisterWindow {
 	private Text varuNrText;
 	private String defaultAntal="1";
 	private Text changeInput;
-	private float total; //Temporary total amount of selected wares, replace with Awe's sum code later
 
 
 	public static void activateCashRegister() {
@@ -125,11 +124,9 @@ public class CashRegisterWindow {
 				
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
-					float sum = CashRegister.calculateSum();
-					int a = (int) (sum * 100); // Code to limit the decimal numbers to 2. Code by my brother
-					sum = a / 100.0f;
+					float sum = CashRegister.calculateSum();					
 					lblDisplay.setText("total sum = " + sum);
-					total = sum;
+					CashRegister.setTotal(sum);
 					return;
 				
 				
@@ -216,9 +213,9 @@ public class CashRegisterWindow {
 		rabbutton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
-				float result = CashRegister.applyDiscount(discountlist.getText(), total);  
+				float result = CashRegister.applyDiscount(discountlist.getText(), CashRegister.getTotal());  
 				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr");
-				total = result;// end discount
+				CashRegister.setTotal(result);// end discount
 			}});
 		
 		//start change calculation
@@ -241,8 +238,8 @@ public class CashRegisterWindow {
 				Float paid = 0f;
 				if (CashRegister.isNumeric(changeInput.getText())) {
 					paid = Float.parseFloat(changeInput.getText());
-					float change = CashRegister.changeCalculation(paid, total);  
-					if (paid < total) {lblDisplay.setText("Insuficient funds");}
+					float change = CashRegister.changeCalculation(paid, CashRegister.getTotal());  
+					if (paid < CashRegister.getTotal()) {lblDisplay.setText("Insuficient funds");}
 					else {lblDisplay.setText("Växel: "+change+"kr");}
 				} else { 
 					lblDisplay.setText("Is not a number");  //end change calculation
