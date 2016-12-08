@@ -35,7 +35,7 @@ public class CashRegisterWindow {
 	private Text varuNrText;
 	private String defaultAntal="1";
 	private Text changeInput;
-	private float total = 1234f; //Temporary total amount of selected wares, replace with Awe's sum code later
+	private float total; //Temporary total amount of selected wares, replace with Awe's sum code later
 
 
 	public static void activateCashRegister() {
@@ -125,10 +125,11 @@ public class CashRegisterWindow {
 				
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
-					double sum = CashRegister.calculateSum();
+					float sum = CashRegister.calculateSum();
 					int a = (int) (sum * 100); // Code to limit the decimal numbers to 2. Code by my brother
-					sum = a / 100.0;
+					sum = a / 100.0f;
 					lblDisplay.setText("total sum = " + sum);
+					total = sum;
 					return;
 				
 				
@@ -216,7 +217,8 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				float result = CashRegister.applyDiscount(discountlist.getText(), total);  
-				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr"); // end discount
+				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr");
+				total = result;// end discount
 			}});
 		
 		//start change calculation
