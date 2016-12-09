@@ -69,12 +69,12 @@ public class CashRegister {
 	public static void initializeCategories() {
 		//Hardcoded creation of item categories. This is called from the Main method in the Login Class /JS
 
-		categoryList.add(new ItemCategory("Mejeri", 1.12f, false));
-		categoryList.add(new ItemCategory("Frukt & Grönt", 1.12f, true));
-		categoryList.add(new ItemCategory("Chark & Pålägg", 1.12f, false));
-		categoryList.add(new ItemCategory("Fisk", 1.12f, false));
-		categoryList.add(new ItemCategory("Dryck", 1.12f, false));
-		categoryList.add(new ItemCategory("Bröd & Bakning", 1.12f, false));
+		categoryList.add(new ItemCategory("Mejeri", 0.12f, false));
+		categoryList.add(new ItemCategory("Frukt & Grönt", 0.12f, true));
+		categoryList.add(new ItemCategory("Chark & Pålägg", 0.12f, false));
+		categoryList.add(new ItemCategory("Fisk", 0.12f, false));
+		categoryList.add(new ItemCategory("Dryck", 0.12f, false));
+		categoryList.add(new ItemCategory("Bröd & Bakning", 0.12f, false));
 	}
 
 	public static void initializeItems() {
@@ -193,9 +193,10 @@ public class CashRegister {
 		float vat = 0;
 		for (int i = 0; i < saleItemList.size(); i++) {
 			
-			vat = vat + saleItemList.get(i).getMyCategory().getSalesTax() * getSaleItemPrice(i+1) * getSaleItemAmount(i+1) ; //roundCash(getTotal() * 0.25f);
+			vat = vat + saleItemList.get(i).getMyCategory().getSalesTax() * getSaleItemPrice(i+1) * getSaleItemAmount(i+1) ; 
 		}
-		//find out the category in the saleitemslist and calculate with the salestax property (ItemCategory (float taxMod)
+		// Calculates VAT based on each item's individual sales tax, i+1 to keep away out of bounds error from being set to -1 in previous functions
+		
 		
 		return vat;
 	}
