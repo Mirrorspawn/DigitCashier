@@ -3,7 +3,7 @@ package se.humanus.DigitCashier;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+//import com.sun.xml.internal.ws.util.StringUtils;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
