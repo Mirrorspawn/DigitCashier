@@ -67,7 +67,7 @@ public class CashRegister {
 
 
 	public static void initializeCategories() {
-		//Hardcoded creation of item categories. This is called from the Main method in teh Login Class /JS
+		//Hardcoded creation of item categories. This is called from the Main method in the Login Class /JS
 
 		categoryList.add(new ItemCategory("Mejeri", 1.12f, false));
 		categoryList.add(new ItemCategory("Frukt & Grönt", 1.12f, true));

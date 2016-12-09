@@ -6,7 +6,7 @@ public class Item {
 	//Class to handle items for purchase. /JS
 	private String idNr; // unique identifying two-digit number
 	private String name; // the name of the item
-	private float price; // the price of the iteem
+	private float price; // the price of the item
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
 	private ItemCategory myCategory; //The category this item belongs to
 	

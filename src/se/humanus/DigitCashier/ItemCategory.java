@@ -6,6 +6,7 @@ import java.util.List;
 public class ItemCategory {
 	String categoryName;
 	Float salesTaxMod=1.12f;
+	//Int[] SalesTax = new int [6];
 	Boolean measuredInWeight;
 	private List<Item> itemsInCategory = new ArrayList<>(); 
 	
