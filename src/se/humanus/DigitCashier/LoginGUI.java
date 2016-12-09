@@ -83,8 +83,8 @@ public class LoginGUI {
 				if (username.equals("Kassör")){
 					if (password.equals("201")){
 						
-						Login.startApplication();
-						
+						LoginWindow.close();
+						Login.startApplication("Cashier");						
 					}
 					else{
 						invalidPassword.setText("Invalid Password");	
@@ -93,7 +93,8 @@ public class LoginGUI {
 				else if (username.equals("Admin")){
 					if (password.equals("302")){
 						
-						Login.startApplication();
+						LoginWindow.close();
+						Login.startApplication("Admin");
 						
 					}
 					else{
@@ -104,7 +105,9 @@ public class LoginGUI {
 				else if (username.equals("Chef")){
 					if (password.equals("503")){
 						
-						Login.startApplication();
+						LoginWindow.close();
+						Login.startApplication("Chef");
+						
 					}	
 					else{
 						invalidPassword.setText("Invalid login-code");
@@ -121,4 +124,5 @@ public class LoginGUI {
 		btnLogin.setText("Login");
 
 	}
+
 }
