@@ -127,9 +127,19 @@ public class CashRegister {
 	//	}
 
 
+	public static float calculateSum(){
+		   float totalPrice = 0;
+		   float amount = 1f;
 
+		   for(int i = 0; i < getLengthOfSaleItemList(); i++) {
+		   amount = amountOfItemList.get(i);{
+		totalPrice = totalPrice + (amount*saleItemList.get(i).getPrice());
+		   }
+		   }
+		return roundCash(totalPrice);
+		}
 
-	public static float calculateSum() { // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
+	/*public static float calculateSum() { // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
 		float totalPrice = 0;
 
 		for(Item item : saleItemList){ 
@@ -137,7 +147,9 @@ public class CashRegister {
 		}
 
 		return roundCash(totalPrice);
-	}
+		
+		
+	}*/
 
 
 
