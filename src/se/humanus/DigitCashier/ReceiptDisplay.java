@@ -73,8 +73,8 @@ public class ReceiptDisplay {
 		composite_3.setLayoutData(new RowData(428, 50));
 		
 		Label lblSum = new Label(composite_3, SWT.NONE);
-		lblSum.setBounds(255, 10, 143, 30);
-		lblSum.setText("Total Sum: " +CashRegister.getTotal()+ "SEK\nVarav Moms: "+CashRegister.getTotalVAT(CashRegister.saleItemList)+"SEK");
+		lblSum.setBounds(265, 0, 163, 50);
+		lblSum.setText("Discount applied:" +CashRegister.getDiscount()+"\nTotal Sum: " +CashRegister.getTotal()+ "SEK\nVarav Moms: "+CashRegister.getTotalVAT(CashRegister.saleItemList)+"SEK");
 
 		shlKvitto.open();
 		shlKvitto.layout();

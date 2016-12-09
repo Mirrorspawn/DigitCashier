@@ -11,7 +11,7 @@ public class CashRegister {
 	static List<Float> amountOfItemList = new ArrayList<>();
 	static String discount_20p = "20% rabatt";
 	static String discount_50kr = "-50kr";
-	static String discount = "";
+	static float discount = 0;
 	static String change = "";
 	static float total = 0;
 
@@ -25,11 +25,11 @@ public class CashRegister {
 		CashRegister.total = total;
 	}
 
-	public static String getDiscount() {
+	public static float getDiscount() {
 		return discount;
 	}
 
-	public static void setDiscount(String discount) {
+	public static void setDiscount(float discount) {
 		CashRegister.discount = discount;
 	}
 
@@ -41,7 +41,7 @@ public class CashRegister {
 		if(discount.equals(discount_20p)) {
 			result = (float) (sum *0.8);
 		}
-
+		setDiscount(sum - result);
 		return result;
 	}
 
@@ -127,7 +127,7 @@ public class CashRegister {
 	//	}
 
 
-	public static float calculateSum(){
+	public static float calculateSum(){     //summation + amount of items calculation
 		   float totalPrice = 0;
 		   float amount = 1f;
 
