@@ -2,6 +2,9 @@ package se.humanus.DigitCashier;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowLayout;
@@ -64,14 +67,14 @@ public class ReceiptDisplay {
 		
 		Label lblSaleInfo = new Label(composite_2, SWT.NONE);
 		lblSaleInfo.setBounds(10, 10, 407, 283);
-		lblSaleInfo.setText("Sale Information goes here");
+		lblSaleInfo.setText("Sale Information goes here\n" +CashRegister.getReceiptSaleInfo(CashRegister.saleItemList));
 		
 		Composite composite_3 = new Composite(composite, SWT.NONE);
 		composite_3.setLayoutData(new RowData(428, 50));
 		
 		Label lblSum = new Label(composite_3, SWT.NONE);
 		lblSum.setBounds(255, 10, 143, 30);
-		lblSum.setText("Total Sum: " +CashRegister.getTotal()+ "SEK\nVAT (25%): "+CashRegister.getTotalVAT()+"SEK");
+		lblSum.setText("Total Sum: " +CashRegister.getTotal()+ "SEK\nVarav Moms: "+CashRegister.getTotalVAT(CashRegister.saleItemList)+"SEK");
 
 		shlKvitto.open();
 		shlKvitto.layout();

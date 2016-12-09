@@ -33,12 +33,9 @@ public class Receipt {
 		dateTime = currentDate + " " + currentTime;
 	}
 
-	public static void setDiscount(float discount2) {
-		float discount = 0;
-		discount2 = discount;
-		// Testing if this sets discount
+	
 		
-	}
+	
 	
 	
 	

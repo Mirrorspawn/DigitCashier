@@ -173,7 +173,7 @@ public class CashRegisterWindow {
 		betalningsmedel.select(0);
 		betalningsmedel.setText("Betalningsmedel");
 
-		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE);
+		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE); //label above drop-down menu
 		lblBetalningsmedel.setText("Betalningsmedel");
 		lblBetalningsmedel.setBounds(10, 187, 96, 15);
 

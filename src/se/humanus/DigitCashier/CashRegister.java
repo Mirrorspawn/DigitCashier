@@ -116,7 +116,7 @@ public class CashRegister {
 	private static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
-		Receipt.setDiscount(0);
+		
 
 	}
 
@@ -189,8 +189,14 @@ public class CashRegister {
 		return amount;
 	}
 
-	public static float getTotalVAT() {	
-		float vat = roundCash(getTotal() * 0.25f);
+	public static float getTotalVAT(List<Item> saleItemList) {	
+		float vat = 0;
+		for (int i = 0; i < saleItemList.size(); i++) {
+			
+			vat = vat + saleItemList.get(i).getMyCategory().getSalesTax() * getSaleItemPrice(i+1) * getSaleItemAmount(i+1) ; //roundCash(getTotal() * 0.25f);
+		}
+		//find out the category in the saleitemslist and calculate with the salestax property (ItemCategory (float taxMod)
+		
 		return vat;
 	}
 
@@ -199,6 +205,18 @@ public class CashRegister {
 		f = a / 100.0f;
 
 		return f;
+	}
+
+	public static String getReceiptSaleInfo(List<Item> saleItemList) {                  //shows a list of purchased items and item amount on receipt with a linebreak for each item
+		String receiptitemlist = "";
+		for(int i = 0; i < saleItemList.size(); i++) {
+
+			receiptitemlist = receiptitemlist + getSaleItemAmount(i+1) + " x " +  saleItemList.get(i) + "\n";
+
+		}
+
+		
+		return receiptitemlist;
 	}
 
 
