@@ -35,6 +35,7 @@ public class CashRegisterWindow {
 	private Text varuNrText;
 	private String defaultAntal="1";
 	private Text changeInput;
+	
 
 
 	public static void activateCashRegister() {
@@ -169,6 +170,9 @@ public class CashRegisterWindow {
 		lblNewLabel_1.setBounds(220, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
 
+		
+		
+		
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
 		betalningsmedel.setItems(new String[] {"Kort", "Kontant", "Present"});
 		betalningsmedel.setBounds(10, 208, 91, 23);
@@ -186,11 +190,12 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
-
-				/*MessageBox paymentBox = new MessageBox(shlDigitcashierCashRegister); //Pop-up confirming payment succeeded - replaced with message in display, remove this if it works for everyone SH
-				paymentBox.setText("Payment confirmation");
-				paymentBox.setMessage("Payment confirmed!");
-				paymentBox.open();*/
+				
+				CashRegister.setBetalningsmedel(betalningsmedel.getText());
+				
+				
+				
+				
 				Receipt currentReceipt = new Receipt(); //created a new Receipt object
 				currentReceipt.showReceipt(); //shows the receipt window
 			}

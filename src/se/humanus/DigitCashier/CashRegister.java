@@ -12,10 +12,18 @@ public class CashRegister {
 	static String discount_20p = "20% rabatt";
 	static String discount_50kr = "-50kr";
 	static float discount = 0;
-	static String change = "";
+	static float change = 0;
 	static float total = 0;
+	static String betalningsmedel="";
 
 
+	public static String getBetalningsmedel() {
+		return betalningsmedel;
+	}
+
+	public static void setBetalningsmedel(String betalningsmedel) {
+		CashRegister.betalningsmedel = betalningsmedel;
+	}
 
 	public static float getTotal() {
 		return total;
@@ -32,6 +40,10 @@ public class CashRegister {
 	public static void setDiscount(float discount) {
 		CashRegister.discount = discount;
 	}
+	
+	public static void setChange(float change) {
+		CashRegister.change = change;
+	}
 
 	public static float applyDiscount(String discount, float sum) {
 		float result = sum;
@@ -45,15 +57,17 @@ public class CashRegister {
 		return result;
 	}
 
-	public static String getChange() {
+	public static float getChange() {
 		return change;
 	}
 
 	public static float changeCalculation(float paid, float total) {
 
+		setChange(paid);
 		return paid - total;
 	}
 
+	
 
 	public static boolean isNumeric(String str)   //code to check that input in change input field is a number
 	{
@@ -148,19 +162,7 @@ public class CashRegister {
 		return roundCash(totalPrice);
 		}
 
-	/*public static float calculateSum() { // Code for summation of items. Not sure if it's correct. Was not able to test it for some reason /AF
-		float totalPrice = 0;
-
-		for(Item item : saleItemList){ 
-			totalPrice += item.getPrice();
-		}
-
-		return roundCash(totalPrice);
-		
-		
-	}*/
-
-
+	
 
 	public static int getLengthOfItemList() {
 		//Returns the number of items in itemList (the list of products that can be sold) /JS
