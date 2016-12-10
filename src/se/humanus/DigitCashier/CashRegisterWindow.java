@@ -94,16 +94,19 @@ public class CashRegisterWindow {
 
 				if (testString.matches("[0-9]{2}")) { //Kollar om det är exakt två siffror i VaruNr
 					int itemNr = Integer.parseInt(testString); //Omvandlar strängen från VaruNr till Integer
-					if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
-						lblAntal.setText("Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+					if (itemNr < CashRegister.getLengthOfItemList()){//kollar så att siffran inte är högre än högsta varunr.
+						if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
+							lblAntal.setText("Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+							}
+						else {
+							lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret
+							}
+						}
 					}
 					else {
-						lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret						
-					}
-				}
-				else {
-					lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
-				}	
+						lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+						}
+				
 			}
 
 
@@ -115,7 +118,6 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 
-				System.out.println("Button Pressed."); //testline to see that buttonpress is detected. Remove from final code.
 				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
 				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
 				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr

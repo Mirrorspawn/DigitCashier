@@ -76,6 +76,10 @@ public class CashRegister {
 		categoryList.add(new ItemCategory("Dryck", 0.12f, false));
 		categoryList.add(new ItemCategory("Bröd & Bakning", 0.12f, false));
 	}
+	
+	public static void createNewCategory(String categoryName, float moms, Boolean measuredInWeight ){
+		categoryList.add(new ItemCategory(categoryName, moms, measuredInWeight));
+	}
 
 	public static void initializeItems() {
 		//Hardcoded creation of items. This is called from the Main method in the Login Class /JS
@@ -112,8 +116,13 @@ public class CashRegister {
 		//checkInitialize();
 
 	}
+	
+	public static void createNewItem (ItemCategory itemCat,String itemID, String itemName, float itemPrice) {
+		//Method to create a new Item
+		itemList.add(new Item(itemCat, itemID, itemName, itemPrice));
+	}
 
-	private static void initializeReceipt(){ 
+	public static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
 		
