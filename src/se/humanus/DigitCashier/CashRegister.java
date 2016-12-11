@@ -15,8 +15,25 @@ public class CashRegister {
 	static float change = 0;
 	static float total = 0;
 	static String betalningsmedel="";
+	static String voucherNr = "";
+	static int voucherCount = 00000;
+	static Calendar cal = Calendar.getInstance();
+    static int date = cal.get(Calendar.DATE);
+    static int month = cal.get(Calendar.MONTH);
+    static int year = cal.get(Calendar.YEAR);
 
 
+	public static String getVoucherNr() {
+		return voucherNr;
+		
+	}
+
+	public static void createVoucherNr() {
+		voucherCount++;
+		CashRegister.voucherNr = String.format("%d%d%d%05d", year, month, date, voucherCount);
+		
+	}
+	
 	public static String getBetalningsmedel() {
 		return betalningsmedel;
 	}

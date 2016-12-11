@@ -192,10 +192,7 @@ public class CashRegisterWindow {
 				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
 				
 				CashRegister.setBetalningsmedel(betalningsmedel.getText());
-				
-				
-				
-				
+				CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
 				Receipt currentReceipt = new Receipt(); //created a new Receipt object
 				currentReceipt.showReceipt(); //shows the receipt window
 			}
