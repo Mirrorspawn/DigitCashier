@@ -1,0 +1,124 @@
+CategoryListStart
+6
+Mejeri
+0.12
+false
+Frukt & Grönt
+0.12
+true
+Chark & Pålägg
+0.12
+false
+Fisk
+0.12
+false
+Dryck
+0.12
+false
+Bröd & Bakning
+0.12
+false
+CategoryListEnd
+ItemListStart
+25
+0
+01
+Standardmjölk, 1l
+9.1
+0
+02
+Creme Fraiche 34%, 5dl
+19.95
+5
+03
+Kronjäst Färsk, 50g
+2.5
+2
+04
+Rökt Skinka, 120g
+22.95
+2
+05
+Falukorv Ring Scan, 800g
+9.1
+2
+06
+Kalles Kaviar ABBA, 300g
+26.95
+2
+07
+Prinskorv, 300g
+28.95
+2
+08
+Kassler i bit, 1000g
+53.95
+2
+09
+Messmör original tub, 350g
+22.5
+0
+10
+Halloumi, 200g
+25.95
+0
+11
+Mozzarella Eko, 100g
+14.95
+2
+12
+Philadelphia Original, 300g
+22.95
+3
+13
+Rökt Lax i skivor, 200g
+53.5
+3
+14
+Rödspättafilé, 450g
+74.95
+3
+15
+Ishavsrom, 75g
+19.5
+4
+16
+Julmust Apotekarnes, 1.4l
+11.95
+4
+17
+Lättdryck Päron, 20cl
+5.7
+4
+18
+Kaffefilter 1x4 blekta, 80st
+18.5
+4
+19
+Godmorgon Apelsinjuice, 1L
+19.95
+1
+20
+Tomater Kvist, Holland
+26.9
+1
+21
+Paprika Röd, Sverige
+24.9
+1
+22
+Clementin, Spanien
+26.9
+1
+23
+Citron Eko, Spanien
+74.9
+1
+24
+Potatis, Sverige
+32.95
+1
+25
+Lime, Brasilien
+3.8
+ItemListEnd

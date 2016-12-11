@@ -81,8 +81,8 @@ public class CashRegister {
 
 
 	public static void initializeCategories() {
-		//Hardcoded creation of item categories. This is called from the Main method in the Login Class /JS
-
+		//Hardcoded creation of default item categories. This is called if load from data-file, fails at any point. /JS
+		categoryList.clear();
 		categoryList.add(new ItemCategory("Mejeri", 0.12f, false));
 		categoryList.add(new ItemCategory("Frukt & Grönt", 0.12f, true));
 		categoryList.add(new ItemCategory("Chark & Pålägg", 0.12f, false));
@@ -96,7 +96,7 @@ public class CashRegister {
 	}
 
 	public static void initializeItems() {
-		//Hardcoded creation of items. This is called from the Main method in the Login Class /JS
+		//Hardcoded creation of default items. This is called if the load from data-file, fails at any point. /JS
 
 		itemList.add(new Item(categoryList.get(0),"01","Standardmjölk, 1l", 9.10f));
 		itemList.add(new Item(categoryList.get(0),"02","Creme Fraiche 34%, 5dl", 19.95f));
@@ -161,6 +161,20 @@ public class CashRegister {
 		   }
 		return roundCash(totalPrice);
 		}
+	
+	public static int getLengthOfCategoryList() {
+		//Returns the number of categories in categoryList
+		int i= categoryList.size();
+		return i;
+	}
+	
+	public static ItemCategory getCategory (int nrInCategoryList){
+		return categoryList.get(nrInCategoryList);
+	}
+	
+	public static int getNrOfCategory (ItemCategory itemCat){
+		return categoryList.indexOf(itemCat);
+	}
 
 	
 
@@ -168,6 +182,10 @@ public class CashRegister {
 		//Returns the number of items in itemList (the list of products that can be sold) /JS
 		int i = itemList.size();
 		return i;
+	}
+	
+	public static Item getItem (int nrInItemList){
+		return itemList.get(nrInItemList);
 	}
 
 	public static int getLengthOfSaleItemList() {
