@@ -55,12 +55,12 @@ public class ReceiptDisplay {
 		
 		Label lblOrgName = new Label(composite_1, SWT.NONE);
 		lblOrgName.setLayoutData(new RowData(215, SWT.DEFAULT));
-		lblOrgName.setText("Organization Name Here");
+		lblOrgName.setText(CashRegister.orgName);
 		
 		Label lblOrgNr = new Label(composite_1, SWT.NONE);
 		lblOrgNr.setAlignment(SWT.RIGHT);
 		lblOrgNr.setLayoutData(new RowData(200, SWT.DEFAULT));
-		lblOrgNr.setText("XXXXXXXXX");
+		lblOrgNr.setText(CashRegister.orgNr);
 		
 		Composite composite_2 = new Composite(composite, SWT.NONE);
 		composite_2.setLayoutData(new RowData(427, 303));
