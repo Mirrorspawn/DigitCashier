@@ -15,6 +15,8 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class AdminWindow {
 
@@ -50,25 +52,33 @@ public class AdminWindow {
 		Composite composite = new Composite(tabFolder, SWT.NONE);
 		tbtmVarugrupper.setControl(composite);
 		
-		Label lblVarugruppensNamn = new Label(composite, SWT.NONE);
-		lblVarugruppensNamn.setBounds(226, 59, 117, 15);
-		lblVarugruppensNamn.setText("Varugruppens Namn:");
+		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
+		lblMomsSatsLabel.setText("Moms-procent:");
+		lblMomsSatsLabel.setBounds(227, 32, 87, 15);
 		
-		Label lblNewLabel = new Label(composite, SWT.NONE);
-		lblNewLabel.setBounds(349, 59, 55, 15);
-		lblNewLabel.setText("New Label");
+		Label lblMoms = new Label(composite, SWT.BORDER);
+		lblMoms.setBackground(SWTResourceManager.getColor(192, 192, 192));
+		lblMoms.setBounds(320, 32, 49, 15);
 		
-		Label lblMomssats = new Label(composite, SWT.NONE);
-		lblMomssats.setBounds(226, 85, 73, 15);
-		lblMomssats.setText("Moms-sats:");
+		Label lblMeasuredText = new Label(composite, SWT.NONE);
+		lblMeasuredText.setText("Measured in:");
+		lblMeasuredText.setBounds(227, 53, 73, 15);
 		
-		Label lblNewLabel_1 = new Label(composite, SWT.NONE);
-		lblNewLabel_1.setBounds(349, 85, 55, 15);
-		lblNewLabel_1.setText("New Label");
+		Label lblMeasureText = new Label(composite, SWT.BORDER);
+		lblMeasureText.setBackground(SWTResourceManager.getColor(192, 192, 192));
+		lblMeasureText.setBounds(320, 53, 49, 15);
 		
-		Button btnMeasuredInWeight = new Button(composite, SWT.CHECK);
-		btnMeasuredInWeight.setBounds(226, 110, 143, 16);
-		btnMeasuredInWeight.setText("Measured in Weight");
+		Combo CatCombo = new Combo(composite, SWT.NONE);
+		CatCombo.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ItemCategory ic = CashRegister.categoryList.get(CatCombo.getSelectionIndex());
+				lblMoms.setText(String.valueOf(ic.getSalesTax()*100));
+				lblMeasureText.setText(ic.getMeasuredInWeight().toString());				
+			}
+		});
+		CatCombo.setItems(Administration.getCategoryList());
+		CatCombo.setBounds(31, 29, 176, 23);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
 		tbtmVaror.setText("Varor");
@@ -103,5 +113,9 @@ public class AdminWindow {
 				display.sleep();
 			}
 		}
+			
+		
 	}
+	
+	
 }
