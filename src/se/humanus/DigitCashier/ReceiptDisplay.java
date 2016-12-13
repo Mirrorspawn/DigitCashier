@@ -77,7 +77,7 @@ public class ReceiptDisplay {
 		lblSum.setText("Discount applied:" +CashRegister.getDiscount()+"\nTotal Sum: " +CashRegister.getTotal()+ "SEK\nVAT: "+CashRegister.getTotalVAT(CashRegister.saleItemList)+"SEK");
 		
 		Label lblPaidXSek = new Label(composite_3, SWT.NONE);
-		lblPaidXSek.setText("Paid: 0.0SEK with \r\nChange: 0.0\r\nVer.NR.: " +CashRegister.getVoucherNr());
+		lblPaidXSek.setText("Paid: " +CashRegister.getChange()+ "SEK with " +CashRegister.getBetalningsmedel()+ "\nChange: " +(CashRegister.getChange() - CashRegister.getTotal())+ "\nVer.NR.: " +CashRegister.getVoucherNr());
 		lblPaidXSek.setBounds(0, 0, 203, 50);
 
 		shlKvitto.open();
