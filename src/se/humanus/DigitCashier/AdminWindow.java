@@ -14,6 +14,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class AdminWindow {
 
@@ -45,6 +48,37 @@ public class AdminWindow {
 		
 		TabItem tbtmVarugrupper = new TabItem(tabFolder, SWT.NONE);
 		tbtmVarugrupper.setText("Varugrupper");
+		
+		Composite composite = new Composite(tabFolder, SWT.NONE);
+		tbtmVarugrupper.setControl(composite);
+		
+		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
+		lblMomsSatsLabel.setText("Moms-procent:");
+		lblMomsSatsLabel.setBounds(227, 32, 87, 15);
+		
+		Label lblMoms = new Label(composite, SWT.BORDER);
+		lblMoms.setBackground(SWTResourceManager.getColor(192, 192, 192));
+		lblMoms.setBounds(320, 32, 49, 15);
+		
+		Label lblMeasuredText = new Label(composite, SWT.NONE);
+		lblMeasuredText.setText("Measured in:");
+		lblMeasuredText.setBounds(227, 53, 73, 15);
+		
+		Label lblMeasureText = new Label(composite, SWT.BORDER);
+		lblMeasureText.setBackground(SWTResourceManager.getColor(192, 192, 192));
+		lblMeasureText.setBounds(320, 53, 49, 15);
+		
+		Combo CatCombo = new Combo(composite, SWT.NONE);
+		CatCombo.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ItemCategory ic = CashRegister.categoryList.get(CatCombo.getSelectionIndex());
+				lblMoms.setText(String.valueOf(ic.getSalesTax()*100));
+				lblMeasureText.setText(ic.getMeasuredInWeight().toString());				
+			}
+		});
+		CatCombo.setItems(Administration.getCategoryList());
+		CatCombo.setBounds(31, 29, 176, 23);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
 		tbtmVaror.setText("Varor");
@@ -79,5 +113,9 @@ public class AdminWindow {
 				display.sleep();
 			}
 		}
+			
+		
 	}
+	
+	
 }

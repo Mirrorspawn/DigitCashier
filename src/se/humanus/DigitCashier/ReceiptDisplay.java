@@ -55,7 +55,7 @@ public class ReceiptDisplay {
 		
 		Label lblOrgName = new Label(composite_1, SWT.NONE);
 		lblOrgName.setLayoutData(new RowData(215, SWT.DEFAULT));
-		lblOrgName.setText("Organization Name Here");
+		lblOrgName.setText(CashRegister.orgName);
 		
 		Label lblOrgNr = new Label(composite_1, SWT.NONE);
 		lblOrgNr.setAlignment(SWT.RIGHT);
@@ -85,7 +85,7 @@ public class ReceiptDisplay {
 		lblSum.setText("Discount applied:" +CashRegister.getDiscount()+"\nTotal Sum: " +CashRegister.getTotal()+ "SEK\nVAT: "+CashRegister.getTotalVAT(CashRegister.saleItemList)+"SEK");
 		
 		Label lblPaidXSek = new Label(composite_3, SWT.NONE);
-		lblPaidXSek.setText("Paid: 0.0SEK with \r\nChange: 0.0\r\nVer.NR.: " +CashRegister.getVoucherNr());
+		lblPaidXSek.setText("Paid: " +CashRegister.getChange()+ "SEK with " +CashRegister.getBetalningsmedel()+ "\nChange: " +(CashRegister.getChange() - CashRegister.getTotal())+ "\nVer.NR.: " +CashRegister.getVoucherNr());
 		lblPaidXSek.setBounds(0, 0, 203, 50);
 		
 
