@@ -26,16 +26,17 @@ public class Receipt {
 	public void showReceipt() { //activates the receipt window
 		ReceiptDisplay.startReceipt();
 	}
-	
-	public void Receipt() { //Constructor class
+	  
+	public Receipt() { //Constructor class
 		LocalDate currentDate = LocalDate.now();//Adds date into
 		LocalTime currentTime = LocalTime.now();
 		dateTime = currentDate + " " + currentTime;
 	}
 
 	
-		
-	
+	public String getDate(){
+		return dateTime;
+	}
 	
 	
 	

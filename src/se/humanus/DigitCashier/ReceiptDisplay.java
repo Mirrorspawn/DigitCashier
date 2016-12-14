@@ -43,9 +43,9 @@ public class ReceiptDisplay {
 		Composite composite = new Composite(shlKvitto, SWT.NONE);
 		composite.setLayout(new RowLayout(SWT.HORIZONTAL));
 		FormData fd_composite = new FormData();
+		fd_composite.top = new FormAttachment(0);
 		fd_composite.bottom = new FormAttachment(0, 384);
 		fd_composite.right = new FormAttachment(0, 434);
-		fd_composite.top = new FormAttachment(0);
 		fd_composite.left = new FormAttachment(0);
 		composite.setLayoutData(fd_composite);
 		
@@ -59,15 +59,23 @@ public class ReceiptDisplay {
 		
 		Label lblOrgNr = new Label(composite_1, SWT.NONE);
 		lblOrgNr.setAlignment(SWT.RIGHT);
-		lblOrgNr.setLayoutData(new RowData(200, SWT.DEFAULT));
+		lblOrgNr.setLayoutData(new RowData(200, 15));
 		lblOrgNr.setText("XXXXXXXXX");
 		
 		Composite composite_2 = new Composite(composite, SWT.NONE);
 		composite_2.setLayoutData(new RowData(427, 303));
 		
 		Label lblSaleInfo = new Label(composite_2, SWT.NONE);
-		lblSaleInfo.setBounds(10, 10, 407, 283);
+		lblSaleInfo.setBounds(10, 30, 407, 263);
 		lblSaleInfo.setText("Sale Information goes here\n" +CashRegister.getReceiptSaleInfo(CashRegister.saleItemList));
+		
+		Label lbldate = new Label(composite_2, SWT.NONE);
+		lbldate.setBounds(10, 0, 216, 15);
+		Receipt receipt = new Receipt();
+		lbldate.setText(receipt.getDate()); // shows date on receipt.
+		
+		
+	
 		
 		Composite composite_3 = new Composite(composite, SWT.NONE);
 		composite_3.setLayoutData(new RowData(428, 50));
@@ -79,6 +87,7 @@ public class ReceiptDisplay {
 		Label lblPaidXSek = new Label(composite_3, SWT.NONE);
 		lblPaidXSek.setText("Paid: 0.0SEK with \r\nChange: 0.0\r\nVer.NR.: " +CashRegister.getVoucherNr());
 		lblPaidXSek.setBounds(0, 0, 203, 50);
+		
 
 		shlKvitto.open();
 		shlKvitto.layout();
