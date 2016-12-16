@@ -17,7 +17,7 @@ Dryck
 false
 Bröd & Bakning
 0.12
-false
+true
 CategoryListEnd
 ItemListStart
 25

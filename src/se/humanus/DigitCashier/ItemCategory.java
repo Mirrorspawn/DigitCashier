@@ -13,12 +13,24 @@ public class ItemCategory {
 		return categoryName;
 	}
 	
+	public void setCategoryName(String newName){
+		categoryName = newName;
+	}
+	
 	public float getSalesTax() {
 		return salesTaxMod;
 	}
 	
+	public void setSalesTax(float newSalesTax) {
+		salesTaxMod = newSalesTax;
+	}
+	
 	public Boolean getMeasuredInWeight() {
 		return measuredInWeight;
+	}
+	
+	public void setMeasuredInWeight(boolean newMeasure){
+		measuredInWeight = newMeasure;
 	}
 	
 	public void addItemToCategory(Item item) {
