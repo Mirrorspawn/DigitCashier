@@ -37,7 +37,7 @@ public class CatEditWindow {
 		Display display = Display.getDefault();
 		Shell shlEditCategory = new Shell();
 		shlEditCategory.setSize(297, 202);
-		shlEditCategory.setText("Edit Category");
+		shlEditCategory.setText("Redigera Varugrupp");
 		
 		Label lblNewLabel = new Label(shlEditCategory, SWT.NONE);
 		lblNewLabel.setBounds(16, 15, 95, 15);
