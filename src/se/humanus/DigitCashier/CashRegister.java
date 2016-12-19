@@ -4,6 +4,7 @@ import java.text.ParsePosition;
 import java.util.*;
 
 public class CashRegister {
+	private static final int itemID = 0;
 	static String orgName="Acme Foods", orgNr="5560398800";
 	static List<ItemCategory> categoryList = new ArrayList<>();
 	static List<Item> itemList = new ArrayList<>();
@@ -101,11 +102,11 @@ public class CashRegister {
 		//Hardcoded creation of default item categories. This is called if load from data-file, fails at any point. /JS
 		categoryList.clear();
 		categoryList.add(new ItemCategory("Mejeri", 0.12f, false));
-		categoryList.add(new ItemCategory("Frukt & Grönt", 0.12f, true));
-		categoryList.add(new ItemCategory("Chark & Pålägg", 0.12f, false));
+		categoryList.add(new ItemCategory("Frukt och Grönt", 0.12f, true));
+		categoryList.add(new ItemCategory("Chark och Pålägg", 0.12f, false));
 		categoryList.add(new ItemCategory("Fisk", 0.12f, false));
 		categoryList.add(new ItemCategory("Dryck", 0.12f, false));
-		categoryList.add(new ItemCategory("Bröd & Bakning", 0.12f, false));
+		categoryList.add(new ItemCategory("Bröd och Bakning", 0.12f, false));
 	}
 	
 	public static void createNewCategory(String categoryName, float moms, Boolean measuredInWeight ){
@@ -270,7 +271,7 @@ public class CashRegister {
 		String receiptitemlist = "";
 		for(int i = 0; i < saleItemList.size(); i++) {
 
-			receiptitemlist = receiptitemlist + getSaleItemAmount(i+1) + " x " +  saleItemList.get(i) + "\n";
+			receiptitemlist = receiptitemlist + saleItemList.get(i).getMyCategory().getCategoryName() + "  -  " + getSaleItemAmount(i+1) + " x " +  saleItemList.get(i) + "\n";
 
 		}
 

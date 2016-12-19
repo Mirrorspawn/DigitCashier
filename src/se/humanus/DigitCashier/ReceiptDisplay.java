@@ -67,7 +67,7 @@ public class ReceiptDisplay {
 		
 		Label lblSaleInfo = new Label(composite_2, SWT.NONE);
 		lblSaleInfo.setBounds(10, 30, 407, 263);
-		lblSaleInfo.setText("Sale Information goes here\n" +CashRegister.getReceiptSaleInfo(CashRegister.saleItemList));
+		lblSaleInfo.setText(CashRegister.getReceiptSaleInfo(CashRegister.saleItemList));
 		
 		Label lbldate = new Label(composite_2, SWT.NONE);
 		lbldate.setBounds(10, 0, 216, 15);

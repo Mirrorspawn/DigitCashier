@@ -3,10 +3,10 @@ CategoryListStart
 Mejeri
 0.12
 false
-Frukt & Grönt
+Frukt och Grönt
 0.12
 true
-Chark & Pålägg
+Chark och Pålägg
 0.12
 false
 Fisk
@@ -15,9 +15,9 @@ false
 Dryck
 0.12
 false
-Bröd & Bakning
+Bröd och Bakning
 0.12
-true
+false
 CategoryListEnd
 ItemListStart
 25
