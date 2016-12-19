@@ -36,6 +36,18 @@ public class Item {
 		return myCategory;
 		}
 	
+	public void setPrice(float newPrice){
+		price = newPrice;
+	}
+	
+	public void setId(String newId) {
+		idNr = newId;
+	}
+	
+	public void setName(String newName) {
+		name = newName;
+	}
+	
 	@Override
 	public String toString() {
 		//returns information about the item in String format.

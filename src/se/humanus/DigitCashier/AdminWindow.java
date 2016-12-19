@@ -87,7 +87,6 @@ public class AdminWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				currentCategory = CashRegister.categoryList.get(CatCombo.getSelectionIndex());
-				
 				textCategoryName.setText(currentCategory.getCategoryName());
 				textMoms.setText(String.valueOf(currentCategory.getSalesTax()*100));
 				textMeasure.setText(currentCategory.getMeasuredInWeight().toString());				
@@ -100,21 +99,16 @@ public class AdminWindow {
 		lblNamn.setBounds(227, 36, 55, 15);
 		lblNamn.setText("Namn:");
 		
-		Button btnCatEditMode = new Button(composite, SWT.NONE);
-		btnCatEditMode.addMouseListener(new MouseAdapter() {
+		Button btnCatEdit = new Button(composite, SWT.NONE);
+		btnCatEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				Administration.setCurrentCategory(currentCategory);
 				CatEditWindow.createNewWindow();
 			}
 		});
-		btnCatEditMode.setText("Redigera Grupp");
-		btnCatEditMode.setBounds(31, 209, 99, 25);
-		
-		Button btnSaveCategory = new Button(composite, SWT.NONE);
-		btnSaveCategory.setText("Spara \u00C4ndringar");
-		btnSaveCategory.setEnabled(false);
-		btnSaveCategory.setBounds(136, 209, 91, 25);
+		btnCatEdit.setText("Redigera Grupp");
+		btnCatEdit.setBounds(31, 209, 99, 25);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
 		tbtmVaror.setText("Varor");
@@ -154,10 +148,10 @@ public class AdminWindow {
 		comboVara.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Item currentItem = CashRegister.itemList.get(comboVara.getSelectionIndex());
+				currentItem = CashRegister.itemList.get(comboVara.getSelectionIndex());
 				textVaruID.setText(String.valueOf(currentItem.getId()));
 				textItemName.setText(currentItem.getName());
-				//System.out.println(it.getMyCategory().getCategoryName().toString());
+				//System.out.println(it.getMyCategory().getCategoryName().toString()); //Testrad
 				textItemCategory.setText((currentItem.getMyCategory()).getCategoryName());
 				textPrice.setText(String.valueOf(currentItem.getPrice()));
 			}
@@ -165,14 +159,16 @@ public class AdminWindow {
 		comboVara.setBounds(34, 28, 157, 23);
 		comboVara.setItems(Administration.getItemList());
 		
-		Button btnStartEditMode = new Button(composite_1, SWT.NONE);
-		btnStartEditMode.setBounds(34, 197, 99, 25);
-		btnStartEditMode.setText("Redigera Vara");
-		
-		Button btnSaveChanges = new Button(composite_1, SWT.NONE);
-		btnSaveChanges.setEnabled(false);
-		btnSaveChanges.setBounds(139, 197, 91, 25);
-		btnSaveChanges.setText("Spara \u00C4ndringar");
+		Button btnItemEdit = new Button(composite_1, SWT.NONE);
+		btnItemEdit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				Administration.setCurrentItem(currentItem);
+				ItemEditWindow.createNewWindow();
+			}
+		});
+		btnItemEdit.setBounds(34, 197, 99, 25);
+		btnItemEdit.setText("Redigera Vara");
 		
 		Menu menu = new Menu(shlAdministration, SWT.BAR);
 		shlAdministration.setMenuBar(menu);

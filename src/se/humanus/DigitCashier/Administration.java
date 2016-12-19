@@ -30,6 +30,20 @@ public class Administration {
 		editCategory = ic;		
 	}
 	
+	public static void setCurrentItem(Item it){
+		editItem = it;
+	}
+	
+	public static boolean isIdNrTaken(String idNr){
+		boolean taken = false;
+		for (int i=0; i<CashRegister.getLengthOfItemList(); i++){
+			if (editItem.getId().equals(idNr)){
+				taken = true;
+				}
+			}
+			return taken;
+	}
+	
 	public static void updateCategory(String catName, float catMoms, boolean measureWeight) {
 		// TODO Auto-generated method stub
 		if (!(editCategory.getCategoryName().equals(catName))){
@@ -41,6 +55,23 @@ public class Administration {
 		if (!(editCategory.getMeasuredInWeight()==measureWeight)){
 			editCategory.setMeasuredInWeight(measureWeight);
 		}
+	}
+	
+	public static void updateItem(String itemName, String idNr, ItemCategory ic, float itemPrice){
+		
+		if (!(editItem.getId().equals(idNr))) {
+			editItem.setId(idNr);				
+		}
+		if (!(editItem.getName().equals(itemName))){
+			editItem.setName(itemName);
+		}
+		if (!(editItem.getPrice()==itemPrice)){
+			editItem.setPrice(itemPrice);
+		}
+		if (!(editItem.getMyCategory() == ic)){
+			editItem.assignToCategory(ic);
+		}
+		
 	}
 
 }
