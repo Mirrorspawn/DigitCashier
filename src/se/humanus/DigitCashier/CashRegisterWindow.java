@@ -131,8 +131,6 @@ public class CashRegisterWindow {
 					lblDisplay.setText("total sum = " + sum);
 					CashRegister.setTotal(sum);
 					return;
-				
-				
 				}
 				if (!antalString.matches(antalMatch)) {
 					lblDisplay.setText("Ogiltig mängd/vikt");
@@ -161,6 +159,8 @@ public class CashRegisterWindow {
 				antalText.setText(defaultAntal);
 				varuNrText.setText("");
 				lblAntal.setText("Antal/Viktb");
+				float sum = CashRegister.calculateSum();
+				CashRegister.setTotal(sum);
 			}
 		});
 		btnEnter.setBounds(139, 44, 75, 25);
@@ -190,7 +190,8 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
-				
+				float sum = CashRegister.calculateSum();
+				CashRegister.setTotal(sum);
 				CashRegister.setBetalningsmedel(betalningsmedel.getText());
 				CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
 				Receipt currentReceipt = new Receipt(); //created a new Receipt object
