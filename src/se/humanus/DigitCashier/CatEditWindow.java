@@ -84,7 +84,7 @@ public class CatEditWindow {
 				String catName = textName.getText();
 				int tempMoms = Integer.parseInt(textMoms.getText());
 				System.out.println(tempMoms);
-				float catMoms = (tempMoms/100.0f);
+				double catMoms = (tempMoms/100.0d);
 				System.out.println(catMoms);
 				int measureTemp = comboMeasure.getSelectionIndex();
 				if (measureTemp == 0){

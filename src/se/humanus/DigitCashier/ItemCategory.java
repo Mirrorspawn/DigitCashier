@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ItemCategory {
 	String categoryName;
-	Float salesTaxMod=0.12f;
+	Double salesTaxMod=0.12d;
 	Boolean measuredInWeight;
 	private List<Item> itemsInCategory = new ArrayList<>(); 
 	
@@ -17,11 +17,11 @@ public class ItemCategory {
 		categoryName = newName;
 	}
 	
-	public float getSalesTax() {
+	public double getSalesTax() {
 		return salesTaxMod;
 	}
 	
-	public void setSalesTax(float newSalesTax) {
+	public void setSalesTax(double newSalesTax) {
 		salesTaxMod = newSalesTax;
 	}
 	
@@ -53,7 +53,7 @@ public class ItemCategory {
 		return itemPresent;
 	}
 	
-	public ItemCategory(String name, float taxMod, Boolean weight) {
+	public ItemCategory(String name, double taxMod, Boolean weight) {
 		this.categoryName=name;
 		this.salesTaxMod=taxMod;
 		this.measuredInWeight=weight;

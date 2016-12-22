@@ -127,7 +127,7 @@ public class CashRegisterWindow {
 				
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
-					float sum = CashRegister.calculateSum();					
+					double sum = CashRegister.calculateSum();					
 					lblDisplay.setText("total sum = " + sum);
 					CashRegister.setTotal(sum);
 					return;
@@ -142,7 +142,7 @@ public class CashRegisterWindow {
 				}
 
 				int itemNr = Integer.parseInt(inputString); //converts itemNr to an Integer
-				float amountOfItem = Float.parseFloat(antalString);//converts amountOfItem to a float value
+				double amountOfItem = Double.parseDouble(antalString);//converts amountOfItem to a float value
 				System.out.println(itemNr); //testline to see what number has been detected. Remove from final code.
 				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
 				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
@@ -159,7 +159,7 @@ public class CashRegisterWindow {
 				antalText.setText(defaultAntal);
 				varuNrText.setText("");
 				lblAntal.setText("Antal/Viktb");
-				float sum = CashRegister.calculateSum();
+				double sum = CashRegister.calculateSum();
 				CashRegister.setTotal(sum);
 			}
 		});
@@ -190,7 +190,7 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
-				float sum = CashRegister.calculateSum();
+				double sum = CashRegister.calculateSum();
 				CashRegister.setTotal(sum);
 				CashRegister.setBetalningsmedel(betalningsmedel.getText());
 				CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
@@ -218,7 +218,7 @@ public class CashRegisterWindow {
 		rabbutton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
-				float result = CashRegister.applyDiscount(discountlist.getText(), CashRegister.getTotal());  
+				double result = CashRegister.applyDiscount(discountlist.getText(), CashRegister.getTotal());  
 				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr");
 				CashRegister.setTotal(result);// end discount
 			}});
@@ -240,10 +240,10 @@ public class CashRegisterWindow {
 		btncalculate.addMouseListener(new MouseAdapter() {     //when calculate button is pressed, if statement is run to check if input field received a numeric value at or above total cost of purchase
 			@Override
 			public void mouseDown(MouseEvent e) {
-				Float paid = 0f;
+				double paid = 0d;
 				if (CashRegister.isNumeric(changeInput.getText())) {
 					paid = Float.parseFloat(changeInput.getText());
-					float change = CashRegister.changeCalculation(paid, CashRegister.getTotal());  
+					double change = CashRegister.changeCalculation(paid, CashRegister.getTotal());  
 					if (paid < CashRegister.getTotal()) {lblDisplay.setText("Insuficient funds");}
 					else {lblDisplay.setText("Växel: "+change+"kr");}
 				} else { 

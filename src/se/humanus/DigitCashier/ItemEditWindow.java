@@ -103,7 +103,7 @@ public class ItemEditWindow {
 					return;					
 				}
 				else{
-					Administration.updateItem(textItemName.getText(), textIDnr.getText(), CashRegister.getCategory(combo.getSelectionIndex()), Float.parseFloat(textPris.getText()));
+					Administration.updateItem(textItemName.getText(), textIDnr.getText(), CashRegister.getCategory(combo.getSelectionIndex()), Double.parseDouble(textPris.getText()));
 					shlRedigeraVara.close();
 				}
 			}

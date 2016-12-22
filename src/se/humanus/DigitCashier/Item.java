@@ -6,7 +6,7 @@ public class Item {
 	//Class to handle items for purchase. /JS
 	private String idNr; // unique identifying two-digit number
 	private String name; // the name of the item
-	private float price; // the price of the item
+	private double price; // the price of the item
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
 	private ItemCategory myCategory; //The category this item belongs to
 	
@@ -16,7 +16,7 @@ public class Item {
 		myCategory = ic;
 		}
 	
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 		}
 	
@@ -36,7 +36,7 @@ public class Item {
 		return myCategory;
 		}
 	
-	public void setPrice(float newPrice){
+	public void setPrice(double newPrice){
 		price = newPrice;
 	}
 	
@@ -57,7 +57,7 @@ public class Item {
 		return name + " á " + df.format(price)+"kr";
 		}
 	
-	public Item (ItemCategory ic, String idNr, String name, float price) {
+	public Item (ItemCategory ic, String idNr, String name, double price) {
 		//Standard constructor method, does not set discount modifier
 		this.myCategory = ic;
 		this.idNr = idNr;

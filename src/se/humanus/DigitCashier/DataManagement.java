@@ -64,11 +64,11 @@ public class DataManagement {
 		//This method loads data from the saveDatafile
 		String categoryName;
 		String tempString; //String to test stuff, remove from final code
-		Float salesTax;
+		double salesTax;
 		boolean weight;
 		int categoryNr;
 		String idNr, itemName;
-		float price;
+		double price;
 		
 		Scanner scan = new Scanner(new File(saveFileName));
 		if (!scan.hasNext()) {//Checks if there is any data in the file, and if there isn't loads the hard-coded defaults.
@@ -85,7 +85,7 @@ public class DataManagement {
 				System.out.println(categoryName);
 				tempString = scan.nextLine();
 				//System.out.println("Before parseFloat: "+tempString); //Testline. Remove for final code.
-				salesTax = Float.parseFloat(tempString);
+				salesTax = Double.parseDouble(tempString);
 				System.out.print(" Sales Tax: "+salesTax);
 				tempString = scan.nextLine();
 				weight = Boolean.parseBoolean(tempString);
@@ -117,7 +117,7 @@ public class DataManagement {
 				itemName = scan.nextLine();
 				System.out.print("  itemName: "+itemName);
 				tempString = scan.nextLine();
-				price = Float.parseFloat(tempString);
+				price = Double.parseDouble(tempString);
 				System.out.println("  Price: "+price);
 				ItemCategory itemCategory = CashRegister.getCategory(categoryNr);
 				CashRegister.createNewItem(itemCategory, idNr, itemName, price);				

@@ -9,12 +9,12 @@ public class CashRegister {
 	static List<ItemCategory> categoryList = new ArrayList<>();
 	static List<Item> itemList = new ArrayList<>();
 	static List<Item> saleItemList = new ArrayList<>();
-	static List<Float> amountOfItemList = new ArrayList<>();
+	static List<Double> amountOfItemList = new ArrayList<>();
 	static String discount_20p = "20% rabatt";
 	static String discount_50kr = "-50kr";
-	static float discount = 0;
-	static float change = 0;
-	static float total = 0;
+	static double discount = 0;
+	static double change = 0;
+	static double total = 0;
 	static String betalningsmedel="";
 	static String voucherNr = "";
 	static int voucherCount = 00000;
@@ -43,43 +43,43 @@ public class CashRegister {
 		CashRegister.betalningsmedel = betalningsmedel;
 	}
 
-	public static float getTotal() {
+	public static double getTotal() {
 		return total;
 	}
 
-	public static void setTotal(float total) {
+	public static void setTotal(double total) {
 		CashRegister.total = total;
 	}
 
-	public static float getDiscount() {
+	public static double getDiscount() {
 		return discount;
 	}
 
-	public static void setDiscount(float discount) {
+	public static void setDiscount(double discount) {
 		CashRegister.discount = discount;
 	}
 	
-	public static void setChange(float change) {
+	public static void setChange(double change) {
 		CashRegister.change = change;
 	}
 
-	public static float applyDiscount(String discount, float sum) {
-		float result = sum;
+	public static double applyDiscount(String discount, double sum) {
+		double result = sum;
 		if(discount.equals(discount_50kr)) {
 			result = sum -50;
 		}
 		if(discount.equals(discount_20p)) {
-			result = (float) (sum *0.8);
+			result = (double) (sum *0.8);
 		}
 		setDiscount(sum - result);
 		return result;
 	}
 
-	public static float getChange() {
+	public static double getChange() {
 		return change;
 	}
 
-	public static float changeCalculation(float paid, float total) {
+	public static double changeCalculation(double paid, double total) {
 
 		setChange(paid);
 		return paid - total;
@@ -101,46 +101,46 @@ public class CashRegister {
 	public static void initializeCategories() {
 		//Hardcoded creation of default item categories. This is called if load from data-file, fails at any point. /JS
 		categoryList.clear();
-		categoryList.add(new ItemCategory("Mejeri", 0.12f, false));
-		categoryList.add(new ItemCategory("Frukt och Grönt", 0.12f, true));
-		categoryList.add(new ItemCategory("Chark och Pålägg", 0.12f, false));
-		categoryList.add(new ItemCategory("Fisk", 0.12f, false));
-		categoryList.add(new ItemCategory("Dryck", 0.12f, false));
-		categoryList.add(new ItemCategory("Bröd och Bakning", 0.12f, false));
+		categoryList.add(new ItemCategory("Mejeri", 0.12d, false));
+		categoryList.add(new ItemCategory("Frukt och Grönt", 0.12d, true));
+		categoryList.add(new ItemCategory("Chark och Pålägg", 0.12d, false));
+		categoryList.add(new ItemCategory("Fisk", 0.12d, false));
+		categoryList.add(new ItemCategory("Dryck", 0.12d, false));
+		categoryList.add(new ItemCategory("Bröd och Bakning", 0.12d, false));
 	}
 	
-	public static void createNewCategory(String categoryName, float moms, Boolean measuredInWeight ){
+	public static void createNewCategory(String categoryName, double moms, Boolean measuredInWeight ){
 		categoryList.add(new ItemCategory(categoryName, moms, measuredInWeight));
 	}
 
 	public static void initializeItems() {
 		//Hardcoded creation of default items. This is called if the load from data-file, fails at any point. /JS
 
-		itemList.add(new Item(categoryList.get(0),"01","Standardmjölk, 1l", 9.10f));
-		itemList.add(new Item(categoryList.get(0),"02","Creme Fraiche 34%, 5dl", 19.95f));
-		itemList.add(new Item(categoryList.get(5),"03","Kronjäst Färsk, 50g", 2.50f));
-		itemList.add(new Item(categoryList.get(2),"04","Rökt Skinka, 120g", 22.95f));
-		itemList.add(new Item(categoryList.get(2),"05","Falukorv Ring Scan, 800g", 9.10f));
-		itemList.add(new Item(categoryList.get(2),"06","Kalles Kaviar ABBA, 300g", 26.95f));
-		itemList.add(new Item(categoryList.get(2),"07","Prinskorv, 300g", 28.95f));
-		itemList.add(new Item(categoryList.get(2),"08","Kassler i bit, 1000g", 53.95f));
-		itemList.add(new Item(categoryList.get(2),"09","Messmör original tub, 350g", 22.50f));
-		itemList.add(new Item(categoryList.get(0),"10","Halloumi, 200g", 25.95f));
-		itemList.add(new Item(categoryList.get(0),"11","Mozzarella Eko, 100g", 14.95f));
-		itemList.add(new Item(categoryList.get(2),"12","Philadelphia Original, 300g", 22.95f));
-		itemList.add(new Item(categoryList.get(3),"13","Rökt Lax i skivor, 200g", 53.50f));
-		itemList.add(new Item(categoryList.get(3),"14","Rödspättafilé, 450g", 74.95f));
-		itemList.add(new Item(categoryList.get(3),"15","Ishavsrom, 75g", 19.50f));
-		itemList.add(new Item(categoryList.get(4),"16","Julmust Apotekarnes, 1.4l", 11.95f));
-		itemList.add(new Item(categoryList.get(4),"17","Lättdryck Päron, 20cl", 5.70f));
-		itemList.add(new Item(categoryList.get(4),"18","Kaffefilter 1x4 blekta, 80st", 18.50f));
-		itemList.add(new Item(categoryList.get(4),"19","Godmorgon Apelsinjuice, 1L", 19.95f));
-		itemList.add(new Item(categoryList.get(1),"20","Tomater Kvist, Holland", 26.90f));
-		itemList.add(new Item(categoryList.get(1),"21","Paprika Röd, Sverige", 24.90f));
-		itemList.add(new Item(categoryList.get(1),"22","Clementin, Spanien", 26.90f));
-		itemList.add(new Item(categoryList.get(1),"23","Citron Eko, Spanien", 74.90f));
-		itemList.add(new Item(categoryList.get(1),"24","Potatis, Sverige", 32.95f));
-		itemList.add(new Item(categoryList.get(1),"25","Lime, Brasilien", 3.80f));
+		itemList.add(new Item(categoryList.get(0),"01","Standardmjölk, 1l", 9.10d));
+		itemList.add(new Item(categoryList.get(0),"02","Creme Fraiche 34%, 5dl", 19.95d));
+		itemList.add(new Item(categoryList.get(5),"03","Kronjäst Färsk, 50g", 2.50d));
+		itemList.add(new Item(categoryList.get(2),"04","Rökt Skinka, 120g", 22.95d));
+		itemList.add(new Item(categoryList.get(2),"05","Falukorv Ring Scan, 800g", 9.10d));
+		itemList.add(new Item(categoryList.get(2),"06","Kalles Kaviar ABBA, 300g", 26.95d));
+		itemList.add(new Item(categoryList.get(2),"07","Prinskorv, 300g", 28.95d));
+		itemList.add(new Item(categoryList.get(2),"08","Kassler i bit, 1000g", 53.95d));
+		itemList.add(new Item(categoryList.get(2),"09","Messmör original tub, 350g", 22.50d));
+		itemList.add(new Item(categoryList.get(0),"10","Halloumi, 200g", 25.95d));
+		itemList.add(new Item(categoryList.get(0),"11","Mozzarella Eko, 100g", 14.95d));
+		itemList.add(new Item(categoryList.get(2),"12","Philadelphia Original, 300g", 22.95d));
+		itemList.add(new Item(categoryList.get(3),"13","Rökt Lax i skivor, 200g", 53.50d));
+		itemList.add(new Item(categoryList.get(3),"14","Rödspättafilé, 450g", 74.95d));
+		itemList.add(new Item(categoryList.get(3),"15","Ishavsrom, 75g", 19.50d));
+		itemList.add(new Item(categoryList.get(4),"16","Julmust Apotekarnes, 1.4l", 11.95d));
+		itemList.add(new Item(categoryList.get(4),"17","Lättdryck Päron, 20cl", 5.70d));
+		itemList.add(new Item(categoryList.get(4),"18","Kaffefilter 1x4 blekta, 80st", 18.50d));
+		itemList.add(new Item(categoryList.get(4),"19","Godmorgon Apelsinjuice, 1L", 19.95d));
+		itemList.add(new Item(categoryList.get(1),"20","Tomater Kvist, Holland", 26.90d));
+		itemList.add(new Item(categoryList.get(1),"21","Paprika Röd, Sverige", 24.90d));
+		itemList.add(new Item(categoryList.get(1),"22","Clementin, Spanien", 26.90d));
+		itemList.add(new Item(categoryList.get(1),"23","Citron Eko, Spanien", 74.90d));
+		itemList.add(new Item(categoryList.get(1),"24","Potatis, Sverige", 32.95d));
+		itemList.add(new Item(categoryList.get(1),"25","Lime, Brasilien", 3.80d));
 
 		//The call below is only used to check that the above list of objects have been created correctly.
 		//It, and the method it calls, are commented out when I don't want to use them. Will be removed for the final
@@ -149,7 +149,7 @@ public class CashRegister {
 
 	}
 	
-	public static void createNewItem (ItemCategory itemCat,String itemID, String itemName, float itemPrice) {
+	public static void createNewItem (ItemCategory itemCat,String itemID, String itemName, double itemPrice) {
 		//Method to create a new Item
 		itemList.add(new Item(itemCat, itemID, itemName, itemPrice));
 	}
@@ -168,9 +168,9 @@ public class CashRegister {
 	//	}
 
 
-	public static float calculateSum(){     //summation + amount of items calculation
-		   float totalPrice = 0;
-		   float amount = 1f;
+	public static double calculateSum(){     //summation + amount of items calculation
+		   double totalPrice = 0;
+		   double amount = 1f;
 
 		   for(int i = 0; i < getLengthOfSaleItemList(); i++) {
 		   amount = amountOfItemList.get(i);{
@@ -221,7 +221,7 @@ public class CashRegister {
 		return saleItemList.get(getLengthOfSaleItemList()-1);
 	}
 
-	public static void addItemToSale(float amountOfItem, int itemID){
+	public static void addItemToSale(double amountOfItem, int itemID){
 		//adds an item from the itemList to the saleItemList which tracks references to products in the current sale. //JS
 		saleItemList.add(itemList.get(itemID-1));
 		amountOfItemList.add(amountOfItem);
@@ -234,22 +234,22 @@ public class CashRegister {
 		return name;
 	}
 
-	public static float getSaleItemPrice(int nrInSale) {
+	public static double getSaleItemPrice(int nrInSale) {
 		//returns the price of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
 		//item was added. If you want the price of the first item registered during the current sale, nrInSale should be 1. /JS
-		float price = saleItemList.get(nrInSale-1).getPrice();
+		double price = saleItemList.get(nrInSale-1).getPrice();
 		return price;
 	}
 
-	public static float getSaleItemAmount (int nrInSale) {
+	public static double getSaleItemAmount (int nrInSale) {
 		//returns the amount of a specific item registered to the current sale. nrInSale marks where in the order of the sale the
 		//item was added. If you want the amount of the first item registered during the current sale, nrInSale should be 1. /JS
-		float amount = amountOfItemList.get(nrInSale-1);
+		double amount = amountOfItemList.get(nrInSale-1);
 		return amount;
 	}
 
-	public static float getTotalVAT(List<Item> saleItemList) {	
-		float vat = 0;
+	public static double getTotalVAT(List<Item> saleItemList) {	
+		double vat = 0;
 		for (int i = 0; i < saleItemList.size(); i++) {
 			
 			vat = vat + saleItemList.get(i).getMyCategory().getSalesTax() * getSaleItemPrice(i+1) * getSaleItemAmount(i+1) ; 
@@ -260,9 +260,9 @@ public class CashRegister {
 		return vat;
 	}
 
-	private static float roundCash(float f) {
+	private static double roundCash(double f) {
 		int a = (int) (f * 100); // Code to limit the decimal numbers to 2. Code by my brother
-		f = a / 100.0f;
+		f = a / 100.0d;
 
 		return f;
 	}

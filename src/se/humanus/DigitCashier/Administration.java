@@ -44,7 +44,7 @@ public class Administration {
 			return taken;
 	}
 	
-	public static void updateCategory(String catName, float catMoms, boolean measureWeight) {
+	public static void updateCategory(String catName, double catMoms, boolean measureWeight) {
 		// TODO Auto-generated method stub
 		if (!(editCategory.getCategoryName().equals(catName))){
 			editCategory.setCategoryName(catName);
@@ -57,7 +57,7 @@ public class Administration {
 		}
 	}
 	
-	public static void updateItem(String itemName, String idNr, ItemCategory ic, float itemPrice){
+	public static void updateItem(String itemName, String idNr, ItemCategory ic, double itemPrice){
 		
 		if (!(editItem.getId().equals(idNr))) {
 			editItem.setId(idNr);				
