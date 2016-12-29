@@ -35,7 +35,7 @@ public class CashRegisterWindow {
 	private Text varuNrText;
 	private String defaultAntal="1";
 	private Text changeInput;
-	
+
 
 
 	public static void activateCashRegister() {
@@ -98,16 +98,16 @@ public class CashRegisterWindow {
 					if (itemNr < CashRegister.getLengthOfItemList()){//kollar så att siffran inte är högre än högsta varunr.
 						if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
 							lblAntal.setText("Vikt");// Sätter texten ovanför Antal/Vikt fönstret
-							}
+						}
 						else {
 							lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret
-							}
 						}
 					}
-					else {
-						lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
-						}
-				
+				}
+				else {
+					lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+				}
+
 			}
 
 
@@ -122,9 +122,9 @@ public class CashRegisterWindow {
 				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
 				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
 				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
-				
-		
-				
+
+
+
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
 					double sum = CashRegister.calculateSum();					
@@ -170,9 +170,9 @@ public class CashRegisterWindow {
 		lblNewLabel_1.setBounds(220, 23, 84, 21);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
 
-		
-		
-		
+
+
+
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
 		betalningsmedel.setItems(new String[] {"Kort", "Kontant", "Present"});
 		betalningsmedel.setBounds(10, 208, 91, 23);
@@ -201,7 +201,7 @@ public class CashRegisterWindow {
 
 
 
-		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount
+		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount /SH
 		lblRabbater.setText("Rabatter");
 		lblRabbater.setBounds(11, 87, 96, 15);
 
@@ -220,10 +220,10 @@ public class CashRegisterWindow {
 			public void mouseDown(MouseEvent e) {
 				double result = CashRegister.applyDiscount(discountlist.getText(), CashRegister.getTotal());  
 				lblDisplay.setText("Discount applied:" + discountlist.getText()+ ". Result: "+result+"kr");
-				CashRegister.setTotal(result);// end discount
+				CashRegister.setTotal(result);// end discount /SH
 			}});
-		
-		//start change calculation
+
+		//start change calculation /SH
 		changeInput = new Text(shlDigitcashierCashRegister, SWT.BORDER); //input field for payment received from customer
 		changeInput.setBounds(10, 160, 76, 21);
 

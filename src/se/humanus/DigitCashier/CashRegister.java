@@ -16,25 +16,25 @@ public class CashRegister {
 	static double change = 0;
 	static double total = 0;
 	static String betalningsmedel="";
-	static String voucherNr = "";
+	static String voucherNr = ""; //this and all variables below it are part of the voucher number creation /SH
 	static int voucherCount = 00000;
 	static Calendar cal = Calendar.getInstance();
-    static int date = cal.get(Calendar.DATE);
-    static int month = cal.get(Calendar.MONTH);
-    static int year = cal.get(Calendar.YEAR);
+	static int date = cal.get(Calendar.DATE);
+	static int month = cal.get(Calendar.MONTH);
+	static int year = cal.get(Calendar.YEAR);
 
 
 	public static String getVoucherNr() {
 		return voucherNr;
-		
+
 	}
 
 	public static void createVoucherNr() {
 		voucherCount++;
 		CashRegister.voucherNr = String.format("%d%d%d%05d", year, month, date, voucherCount);
-		
+
 	}
-	
+
 	public static String getBetalningsmedel() {
 		return betalningsmedel;
 	}
@@ -44,7 +44,8 @@ public class CashRegister {
 	}
 
 	public static double getTotal() {
-		return total;
+		return roundCash(total);
+
 	}
 
 	public static void setTotal(double total) {
@@ -52,13 +53,13 @@ public class CashRegister {
 	}
 
 	public static double getDiscount() {
-		return discount;
+		return roundCash(discount);
 	}
 
 	public static void setDiscount(double discount) {
 		CashRegister.discount = discount;
 	}
-	
+
 	public static void setChange(double change) {
 		CashRegister.change = change;
 	}
@@ -72,20 +73,21 @@ public class CashRegister {
 			result = (double) (sum *0.8);
 		}
 		setDiscount(sum - result);
-		return result;
+		return roundCash(result);
 	}
+	//calculation for discount, one for a flat amount and one for a percentage /SH
 
 	public static double getChange() {
-		return change;
+		return roundCash(change);
 	}
 
 	public static double changeCalculation(double paid, double total) {
 
 		setChange(paid);
-		return paid - total;
-	}
+		return roundCash(paid - total);
+	} //calculates change owed to customer after purchase and rounds the result to 2 decimals max /SH
 
-	
+
 
 	public static boolean isNumeric(String str)   //code to check that input in change input field is a number
 	{
@@ -108,7 +110,7 @@ public class CashRegister {
 		categoryList.add(new ItemCategory("Dryck", 0.12d, false));
 		categoryList.add(new ItemCategory("Bröd och Bakning", 0.12d, false));
 	}
-	
+
 	public static void createNewCategory(String categoryName, double moms, Boolean measuredInWeight ){
 		categoryList.add(new ItemCategory(categoryName, moms, measuredInWeight));
 	}
@@ -148,7 +150,7 @@ public class CashRegister {
 		//checkInitialize();
 
 	}
-	
+
 	public static void createNewItem (ItemCategory itemCat,String itemID, String itemName, double itemPrice) {
 		//Method to create a new Item
 		itemList.add(new Item(itemCat, itemID, itemName, itemPrice));
@@ -157,51 +159,47 @@ public class CashRegister {
 	public static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
-		
+
 
 	}
 
-	//private static void checkInitialize() {
-	//	for(int i=0;i<itemList.size();i++) {
-	//		System.out.println(itemList.get(i).toString());
-	//		}
-	//	}
+
 
 
 	public static double calculateSum(){     //summation + amount of items calculation
-		   double totalPrice = 0;
-		   double amount = 1f;
+		double totalPrice = 0;
+		double amount = 1f;
 
-		   for(int i = 0; i < getLengthOfSaleItemList(); i++) {
-		   amount = amountOfItemList.get(i);{
-		totalPrice = totalPrice + (amount*saleItemList.get(i).getPrice());
-		   }
-		   }
-		return roundCash(totalPrice);
+		for(int i = 0; i < getLengthOfSaleItemList(); i++) {
+			amount = amountOfItemList.get(i);{
+				totalPrice = totalPrice + (amount*saleItemList.get(i).getPrice());
+			}
 		}
-	
+		return roundCash(totalPrice);
+	}
+
 	public static int getLengthOfCategoryList() {
 		//Returns the number of categories in categoryList
 		int i= categoryList.size();
 		return i;
 	}
-	
+
 	public static ItemCategory getCategory (int nrInCategoryList){
 		return categoryList.get(nrInCategoryList);
 	}
-	
+
 	public static int getNrOfCategory (ItemCategory itemCat){
 		return categoryList.indexOf(itemCat);
 	}
 
-	
+
 
 	public static int getLengthOfItemList() {
 		//Returns the number of items in itemList (the list of products that can be sold) /JS
 		int i = itemList.size();
 		return i;
 	}
-	
+
 	public static Item getItem (int nrInItemList){
 		return itemList.get(nrInItemList);
 	}
@@ -251,23 +249,23 @@ public class CashRegister {
 	public static double getTotalVAT(List<Item> saleItemList) {	
 		double vat = 0;
 		for (int i = 0; i < saleItemList.size(); i++) {
-			
+
 			vat = vat + saleItemList.get(i).getMyCategory().getSalesTax() * getSaleItemPrice(i+1) * getSaleItemAmount(i+1) ; 
 		}
-		// Calculates VAT based on each item's individual sales tax, i+1 to keep away out of bounds error from being set to -1 in previous functions
-		
-		
-		return vat;
+		// Calculates VAT based on each item's individual sales tax, i+1 to keep away out of bounds error from being set to -1 in previous functions /SH
+
+
+		return roundCash(vat);
 	}
 
 	private static double roundCash(double f) {
-		int a = (int) (f * 100); // Code to limit the decimal numbers to 2. Code by my brother
+		int a = (int) (f * 100); // Code to limit the decimal numbers to 2
 		f = a / 100.0d;
 
 		return f;
 	}
 
-	public static String getReceiptSaleInfo(List<Item> saleItemList) {                  //shows a list of purchased items and item amount on receipt with a linebreak for each item
+	public static String getReceiptSaleInfo(List<Item> saleItemList) {                  //shows a list of purchased items and item amount on receipt with a linebreak for each item /SH
 		String receiptitemlist = "";
 		for(int i = 0; i < saleItemList.size(); i++) {
 
@@ -275,7 +273,7 @@ public class CashRegister {
 
 		}
 
-		
+
 		return receiptitemlist;
 	}
 

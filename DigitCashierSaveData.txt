@@ -1,7 +1,7 @@
 CategoryListStart
 6
 Mejeri
-0.12
+0.15
 false
 Frukt och Grönt
 0.12

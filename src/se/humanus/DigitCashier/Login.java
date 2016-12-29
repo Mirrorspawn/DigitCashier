@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Login {
-	
+
 	/**
 	 * Launch the application.
 	 * @param args
@@ -18,11 +18,11 @@ public class Login {
 		DataManagement.LoadData();
 		LoginGUI.activateLoginWindow();
 	}
-		
-		/*Method-calls below initialize and starts things to do with CashRegister. 
-		 * Any login code should probably be before that call. Any call to a method that needs to use the 
-		 *the hardcode-created Items should be put after it /JS 		
-		 */
+
+	/*Method-calls below initialize and starts things to do with CashRegister. 
+	 * Any login code should probably be before that call. Any call to a method that needs to use the 
+	 *the hardcode-created Items should be put after it /JS 		
+	 */
 	public static void startApplication(String mode){
 		//CashRegister.initializeCategories(); // This is a call to a method in Cashregister that creates some objects of the class ItemCategory./JS
 		//CashRegister.initializeItems(); //This is a call to a method in CashRegister that creates objects of the class Item./JS
@@ -36,7 +36,7 @@ public class Login {
 		else if (mode.equals("Chef")){
 			System.out.println("Not implemented yet.");
 		}
-		
+
 	}
 
 }

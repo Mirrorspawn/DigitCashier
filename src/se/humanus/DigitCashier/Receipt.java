@@ -13,31 +13,31 @@ public class Receipt {
 	private String receiptMainText;
 	private String itemCategory;
 	private int itemDiscount;
-	
+
 	public static void setOrganization(String organizationName, String organizationNr){ //Sets the orgName and orgNr
 		orgName=organizationName;
 		orgNr=organizationNr;
 	}
-	
+
 	public void addLineToReceipt(String newTextLine){ //Collects String variables passed into it, \n makes sure the new string is on it's own line.
 		receiptMainText = receiptMainText + "\n" + newTextLine;		
 	}
-	
+
 	public void showReceipt() { //activates the receipt window
 		ReceiptDisplay.startReceipt();
 	}
-	  
+
 	public Receipt() { //Constructor class
 		LocalDate currentDate = LocalDate.now();//Adds date into
 		LocalTime currentTime = LocalTime.now();
 		dateTime = currentDate + " " + currentTime;
 	}
 
-	
+
 	public String getDate(){
 		return dateTime;
 	}
-	
-	
-	
+
+
+
 }
