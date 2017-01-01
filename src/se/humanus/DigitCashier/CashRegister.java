@@ -159,12 +159,7 @@ public class CashRegister {
 	public static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
-
-
 	}
-
-
-
 
 	public static double calculateSum(){     //summation + amount of items calculation
 		double totalPrice = 0;
@@ -244,6 +239,14 @@ public class CashRegister {
 		//item was added. If you want the amount of the first item registered during the current sale, nrInSale should be 1. /JS
 		double amount = amountOfItemList.get(nrInSale-1);
 		return amount;
+	}
+	
+	public static void clearSale (){
+		saleItemList.clear();
+		amountOfItemList.clear();
+		setTotal(0.0d);
+		setBetalningsmedel("");
+		
 	}
 
 	public static double getTotalVAT(List<Item> saleItemList) {	

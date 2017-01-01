@@ -38,6 +38,9 @@ public class CashRegisterWindow {
 
 
 
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public static void activateCashRegister() {
 		try {
 			CashRegisterWindow window = new CashRegisterWindow();
@@ -196,6 +199,7 @@ public class CashRegisterWindow {
 				CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
 				Receipt currentReceipt = new Receipt(); //created a new Receipt object
 				currentReceipt.showReceipt(); //shows the receipt window
+				CashRegister.clearSale();
 			}
 		});
 
@@ -242,7 +246,7 @@ public class CashRegisterWindow {
 			public void mouseDown(MouseEvent e) {
 				double paid = 0d;
 				if (CashRegister.isNumeric(changeInput.getText())) {
-					paid = Float.parseFloat(changeInput.getText());
+					paid = Double.parseDouble(changeInput.getText());
 					double change = CashRegister.changeCalculation(paid, CashRegister.getTotal());  
 					if (paid < CashRegister.getTotal()) {lblDisplay.setText("Insuficient funds");}
 					else {lblDisplay.setText("Växel: "+change+"kr");}
