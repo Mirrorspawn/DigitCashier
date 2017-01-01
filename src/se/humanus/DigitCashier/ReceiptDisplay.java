@@ -13,8 +13,11 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.layout.RowData;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Text;
 
 public class ReceiptDisplay {
+	private Text text;
 
 	/**
 	 * Launch the application.
@@ -36,11 +39,13 @@ public class ReceiptDisplay {
 	public void open() {
 		Display display = Display.getDefault();
 		Shell shlKvitto = new Shell();
+		shlKvitto.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
 		shlKvitto.setSize(450, 423);
-		shlKvitto.setText("Kvitto");
+		shlKvitto.setText("Receipt");
 		shlKvitto.setLayout(new FormLayout());
 
 		Composite composite = new Composite(shlKvitto, SWT.NONE);
+		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		composite.setLayout(new RowLayout(SWT.HORIZONTAL));
 		FormData fd_composite = new FormData();
 		fd_composite.top = new FormAttachment(0);
@@ -63,17 +68,23 @@ public class ReceiptDisplay {
 		lblOrgNr.setText(CashRegister.orgNr);
 
 		Composite composite_2 = new Composite(composite, SWT.NONE);
+		composite_2.setForeground(SWTResourceManager.getColor(176, 196, 222));
 		composite_2.setLayoutData(new RowData(427, 303));
 
-		Label lblSaleInfo = new Label(composite_2, SWT.NONE);
-		lblSaleInfo.setBounds(10, 30, 407, 263);
-		lblSaleInfo.setText(CashRegister.getReceiptSaleInfo(CashRegister.saleItemList)); //info from cash register input
+		//Label lblSaleInfo = new Label(composite_2, SWT.V_SCROLL);
+		//lblSaleInfo.setBounds(10, 30, 407, 263);
+		//lblSaleInfo.setText(CashRegister.getReceiptSaleInfo(CashRegister.saleItemList)); //info from cash register input
 
 		Label lbldate = new Label(composite_2, SWT.NONE);
-		lbldate.setBounds(10, 0, 216, 15);
+		lbldate.setAlignment(SWT.CENTER);
+		lbldate.setBounds(2, 0, 425, 15);
 		Receipt receipt = new Receipt();
 		lbldate.setText(receipt.getDate()); // shows date on receipt.
-
+		
+		text = new Text(composite_2, SWT.V_SCROLL);  //scroll function with info from cash register input, replaces previous static window
+		text.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BACKGROUND));
+		text.setBounds(10, 30, 407, 251);
+		text.setText(CashRegister.getReceiptSaleInfo(CashRegister.saleItemList));
 
 
 
@@ -88,7 +99,7 @@ public class ReceiptDisplay {
 		//Amount paid, payment method and unique voucher nr start
 		Label lblPaidXSek = new Label(composite_3, SWT.NONE);
 		lblPaidXSek.setText("Paid: " +CashRegister.getChange()+ "SEK with " +CashRegister.getBetalningsmedel()+ "\nChange: " +(CashRegister.getChange() - CashRegister.getTotal())+ "\nVer.NR.: " +CashRegister.getVoucherNr());
-		lblPaidXSek.setBounds(0, 0, 203, 50);
+		lblPaidXSek.setBounds(5, 0, 203, 50);
 		//Amount paid, payment method and unique voucher nr end
 
 
