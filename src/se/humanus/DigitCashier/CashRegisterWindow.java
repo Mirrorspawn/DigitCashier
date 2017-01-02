@@ -78,6 +78,10 @@ public class CashRegisterWindow {
 		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
 		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		lblDisplay.setBounds(220, 43, 316, 25);
+		
+		Label lblSaleDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
+		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		lblSaleDisplay.setBounds(222, 74, 313, 238);
 
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblAntal.setBounds(10, 23, 62, 15);
@@ -157,7 +161,9 @@ public class CashRegisterWindow {
 					System.out.println("Added " + amountOfItem + " of item " + itemNr);//Testline to see that this has worked. Remove from final code.
 					String itemAdded = (CashRegister.getLatestItem()).toString();
 					System.out.println(itemAdded);//testline. Remove from final code
+					String itemLine = amountOfItem + " x " + itemAdded;
 					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
+					lblSaleDisplay.setText(lblSaleDisplay.getText() + itemLine + "\n");
 				}
 				antalText.setText(defaultAntal);
 				varuNrText.setText("");
@@ -170,7 +176,7 @@ public class CashRegisterWindow {
 		btnEnter.setText("Enter");
 
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblNewLabel_1.setBounds(220, 23, 84, 21);
+		lblNewLabel_1.setBounds(220, 23, 71, 16);
 		lblNewLabel_1.setText("Visningsf\u00E4lt");
 
 
@@ -200,6 +206,7 @@ public class CashRegisterWindow {
 				Receipt currentReceipt = new Receipt(); //created a new Receipt object
 				currentReceipt.showReceipt(); //shows the receipt window
 				CashRegister.clearSale();
+				lblSaleDisplay.setText("");
 			}
 		});
 

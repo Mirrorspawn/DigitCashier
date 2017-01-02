@@ -45,7 +45,6 @@ public class Administration {
 	}
 	
 	public static void updateCategory(String catName, double catMoms, boolean measureWeight) {
-		// TODO Auto-generated method stub
 		if (!(editCategory.getCategoryName().equals(catName))){
 			editCategory.setCategoryName(catName);
 		}
