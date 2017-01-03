@@ -26,7 +26,7 @@ public class Login {
 	public static void startApplication(String mode){
 		//CashRegister.initializeCategories(); // This is a call to a method in Cashregister that creates some objects of the class ItemCategory./JS
 		//CashRegister.initializeItems(); //This is a call to a method in CashRegister that creates objects of the class Item./JS
-		CashRegister.initializeReceipt();//This calls a method that initializes some values in the receipt class.
+		//CashRegister.initializeReceipt();//This calls a method that initializes some values in the receipt class.
 		if (mode.equals("Cashier")){
 			CashRegisterWindow.activateCashRegister(); //Starts up the CashRegister interface.
 		}

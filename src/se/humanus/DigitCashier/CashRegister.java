@@ -156,10 +156,10 @@ public class CashRegister {
 		itemList.add(new Item(itemCat, itemID, itemName, itemPrice));
 	}
 
-	public static void initializeReceipt(){ 
+	/*public static void initializeReceipt(){ 
 		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
 		Receipt.setOrganization(orgName,orgNr);
-	}
+	}*/
 
 	public static double calculateSum(){     //summation + amount of items calculation
 		double totalPrice = 0;

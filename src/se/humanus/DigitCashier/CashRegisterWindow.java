@@ -109,9 +109,11 @@ public class CashRegisterWindow {
 						else {
 							lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret
 						}
+						
 					}
 				}
-				else {
+				else 
+				{
 					lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
 				}
 
@@ -183,7 +185,7 @@ public class CashRegisterWindow {
 
 
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
-		betalningsmedel.setItems(new String[] {"Kort", "Kontant", "Present"});
+		betalningsmedel.setItems(new String[] {"Creditcard", "Cash", "Giftcard"});
 		betalningsmedel.setBounds(10, 208, 91, 23);
 		betalningsmedel.select(0);
 		betalningsmedel.setText("Betalningsmedel");
@@ -198,15 +200,36 @@ public class CashRegisterWindow {
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
-				lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
 				double sum = CashRegister.calculateSum();
-				CashRegister.setTotal(sum);
-				CashRegister.setBetalningsmedel(betalningsmedel.getText());
-				CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
-				Receipt currentReceipt = new Receipt(); //created a new Receipt object
-				currentReceipt.showReceipt(); //shows the receipt window
-				CashRegister.clearSale();
-				lblSaleDisplay.setText("");
+				boolean paymentReceived = (!changeInput.getText().isEmpty()); 
+				if (!paymentReceived){
+					switch(betalningsmedel.getText()){
+					case "Cash":
+						lblDisplay.setText("No amount registered for Cash payment.");
+						break;
+						
+					case "Giftcard":
+						lblDisplay.setText("No amount registered for coupon.");
+						break;
+						
+					case "Creditcard":
+						changeInput.setText(String.valueOf(sum));
+						CashRegister.setChange(sum);
+						paymentReceived = true;
+						break;					
+					}		
+				}
+				if (paymentReceived){
+					lblDisplay.setText("Payment Confirmed: " + betalningsmedel.getText()); //displays confirmation with chosen method after pressing payment confirmation SH
+					CashRegister.setTotal(sum);
+					CashRegister.setBetalningsmedel(betalningsmedel.getText());
+					CashRegister.createVoucherNr(); //generates new voucher number each time button is pressed (resets when closing app window)
+					Receipt currentReceipt = new Receipt(); //created a new Receipt object
+					currentReceipt.showReceipt(); //shows the receipt window
+					CashRegister.clearSale();
+					lblSaleDisplay.setText("");
+					changeInput.setText("");
+					}
 			}
 		});
 
@@ -239,7 +262,7 @@ public class CashRegisterWindow {
 		changeInput.setBounds(10, 160, 76, 21);
 
 		Label lblVxel = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblVxel.setText("V\u00E4xel");
+		lblVxel.setText("Amount Paid");
 		lblVxel.setBounds(10, 139, 96, 15);
 
 		Button btncalculate = new Button(shlDigitcashierCashRegister, SWT.NONE);
@@ -256,7 +279,7 @@ public class CashRegisterWindow {
 					paid = Double.parseDouble(changeInput.getText());
 					double change = CashRegister.changeCalculation(paid, CashRegister.getTotal());  
 					if (paid < CashRegister.getTotal()) {lblDisplay.setText("Insuficient funds");}
-					else {lblDisplay.setText("Växel: "+change+"kr");}
+					else {lblDisplay.setText("Change: "+change+"kr");}
 				} else { 
 					lblDisplay.setText("Is not a number");  //end change calculation
 				}
