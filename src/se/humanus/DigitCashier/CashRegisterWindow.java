@@ -80,7 +80,7 @@ public class CashRegisterWindow {
 		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		lblDisplay.setBounds(220, 43, 316, 25);
 		
-		Text lblSaleDisplay = new Text(shlDigitcashierCashRegister, SWT.V_SCROLL);
+		Text lblSaleDisplay = new Text(shlDigitcashierCashRegister, SWT.READ_ONLY | SWT.V_SCROLL | SWT.MULTI);
 		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		lblSaleDisplay.setBounds(222, 74, 313, 238);
 
@@ -166,7 +166,7 @@ public class CashRegisterWindow {
 					System.out.println(itemAdded);//testline. Remove from final code
 					String itemLine = amountOfItem + " x " + itemAdded;
 					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
-					lblSaleDisplay.setText(lblSaleDisplay.getText() + itemLine + "\n");
+					lblSaleDisplay.append(itemLine + "\n");
 				}
 				antalText.setText(defaultAntal);
 				varuNrText.setText("");
