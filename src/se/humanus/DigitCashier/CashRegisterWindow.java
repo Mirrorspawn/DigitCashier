@@ -35,6 +35,7 @@ public class CashRegisterWindow {
 	private Text varuNrText;
 	private String defaultAntal="1";
 	private Text changeInput;
+	private Text text;
 
 
 
@@ -79,7 +80,7 @@ public class CashRegisterWindow {
 		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		lblDisplay.setBounds(220, 43, 316, 25);
 		
-		Label lblSaleDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
+		Text lblSaleDisplay = new Text(shlDigitcashierCashRegister, SWT.V_SCROLL);
 		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		lblSaleDisplay.setBounds(222, 74, 313, 238);
 
@@ -268,8 +269,8 @@ public class CashRegisterWindow {
 		Button btncalculate = new Button(shlDigitcashierCashRegister, SWT.NONE);
 		btncalculate.setBounds(113, 158, 75, 25);
 		btncalculate.setText("Calculate");
-
-
+		
+		
 
 		btncalculate.addMouseListener(new MouseAdapter() {     //when calculate button is pressed, if statement is run to check if input field received a numeric value at or above total cost of purchase
 			@Override
