@@ -60,13 +60,13 @@ public class AdminWindow {
 		tabFolder.setBounds(0, 10, 549, 358);
 		
 		TabItem tbtmVarugrupper = new TabItem(tabFolder, SWT.NONE);
-		tbtmVarugrupper.setText("Varugrupper");
+		tbtmVarugrupper.setText("Item Categories");
 		
 		Composite composite = new Composite(tabFolder, SWT.NONE);
 		tbtmVarugrupper.setControl(composite);
 		
 		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
-		lblMomsSatsLabel.setText("Moms-procent:");
+		lblMomsSatsLabel.setText("VAT in percent:");
 		lblMomsSatsLabel.setBounds(226, 59, 87, 15);
 		
 		Label lblMeasuredText = new Label(composite, SWT.NONE);
@@ -97,7 +97,7 @@ public class AdminWindow {
 		
 		Label lblNamn = new Label(composite, SWT.NONE);
 		lblNamn.setBounds(227, 36, 55, 15);
-		lblNamn.setText("Namn:");
+		lblNamn.setText("Name:");
 		
 		Button btnCatEdit = new Button(composite, SWT.NONE);
 		btnCatEdit.addMouseListener(new MouseAdapter() {
@@ -107,22 +107,22 @@ public class AdminWindow {
 				CatEditWindow.createNewWindow();
 			}
 		});
-		btnCatEdit.setText("Redigera Grupp");
+		btnCatEdit.setText("Edit Category");
 		btnCatEdit.setBounds(31, 209, 99, 25);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
-		tbtmVaror.setText("Varor");
+		tbtmVaror.setText("Items");
 		
 		Composite composite_1 = new Composite(tabFolder, SWT.NONE);
 		tbtmVaror.setControl(composite_1);
 		
 		Label lblVaruIDText = new Label(composite_1, SWT.NONE);
 		lblVaruIDText.setBounds(240, 31, 55, 15);
-		lblVaruIDText.setText("Varu ID");
+		lblVaruIDText.setText("Item ID");
 		
 		Label lblItemName = new Label(composite_1, SWT.NONE);
 		lblItemName.setBounds(239, 56, 55, 15);
-		lblItemName.setText("Namn");
+		lblItemName.setText("Name");
 		
 		Label lblPriceText = new Label(composite_1, SWT.NONE);
 		lblPriceText.setBounds(240, 82, 55, 15);
@@ -168,7 +168,7 @@ public class AdminWindow {
 			}
 		});
 		btnItemEdit.setBounds(34, 197, 99, 25);
-		btnItemEdit.setText("Redigera Vara");
+		btnItemEdit.setText("Edit Item");
 		
 		Menu menu = new Menu(shlAdministration, SWT.BAR);
 		shlAdministration.setMenuBar(menu);
