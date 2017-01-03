@@ -85,11 +85,11 @@ public class CashRegisterWindow {
 
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblAntal.setBounds(10, 23, 62, 15);
-		lblAntal.setText("Antal/Vikt");
+		lblAntal.setText("Amount");
 
 		Label lblVarunr = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblVarunr.setBounds(78, 23, 55, 15);
-		lblVarunr.setText("VaruNr");
+		lblVarunr.setText("ItemNr");
 
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
 		antalText.setBounds(11, 44, 35, 25);
@@ -104,17 +104,17 @@ public class CashRegisterWindow {
 					int itemNr = Integer.parseInt(testString); //Omvandlar strängen från VaruNr till Integer
 					if (itemNr < CashRegister.getLengthOfItemList()){//kollar så att siffran inte är högre än högsta varunr.
 						if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
-							lblAntal.setText("Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+							lblAntal.setText("Weight");// Sätter texten ovanför Antal/Vikt fönstret
 						}
 						else {
-							lblAntal.setText("Antal");// Sätter texten ovanför Antal/Vikt fönstret
+							lblAntal.setText("Amount");// Sätter texten ovanför Antal/Vikt fönstret
 						}
 						
 					}
 				}
 				else 
 				{
-					lblAntal.setText("Antal/Vikt");// Sätter texten ovanför Antal/Vikt fönstret
+					lblAntal.setText("Amount");// Sätter texten ovanför Antal/Vikt fönstret
 				}
 
 			}
@@ -142,11 +142,11 @@ public class CashRegisterWindow {
 					return;
 				}
 				if (!antalString.matches(antalMatch)) {
-					lblDisplay.setText("Ogiltig mängd/vikt");
+					lblDisplay.setText("Illegal amount/weight");
 					return;
 				}
 				if (!inputString.matches("[0-9]{2}")) {
-					lblDisplay.setText("Ogiltig input. VaruNr skall bestå av två siffror.");
+					lblDisplay.setText("Illegal value. ItemNr has to be two digits.");
 					return;
 				}
 
@@ -155,7 +155,7 @@ public class CashRegisterWindow {
 				System.out.println(itemNr); //testline to see what number has been detected. Remove from final code.
 				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
 				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
-					lblDisplay.setText("Varunummer finns ej.");					
+					lblDisplay.setText("No such ItemNr.");					
 				}
 				else {
 					lblDisplay.setText("");
@@ -179,24 +179,24 @@ public class CashRegisterWindow {
 
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblNewLabel_1.setBounds(220, 23, 71, 16);
-		lblNewLabel_1.setText("Visningsf\u00E4lt");
+		lblNewLabel_1.setText("Display");
 
 
 
 
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
 		betalningsmedel.setItems(new String[] {"Creditcard", "Cash", "Giftcard"});
-		betalningsmedel.setBounds(10, 208, 91, 23);
+		betalningsmedel.setBounds(10, 208, 96, 23);
 		betalningsmedel.select(0);
-		betalningsmedel.setText("Betalningsmedel");
+		betalningsmedel.setText("Payment Method");
 
 		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE); //label above drop-down menu
-		lblBetalningsmedel.setText("Betalningsmedel");
+		lblBetalningsmedel.setText("Payment Method");
 		lblBetalningsmedel.setBounds(10, 187, 96, 15);
 
 		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
 		btnKpKlart.setBounds(113, 206, 75, 25);
-		btnKpKlart.setText("K\u00F6p Klart");
+		btnKpKlart.setText("Finalize Sale");
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -236,12 +236,12 @@ public class CashRegisterWindow {
 
 
 		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount /SH
-		lblRabbater.setText("Rabatter");
+		lblRabbater.setText("Discount");
 		lblRabbater.setBounds(11, 87, 96, 15);
 
 		Combo discountlist = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY);
-		discountlist.setItems(new String[] {CashRegister.discount_20p, CashRegister.discount_50kr});
-		discountlist.setBounds(11, 108, 91, 23);
+		discountlist.setItems(new String[] {"20% discount", "-50kr"});
+		discountlist.setBounds(11, 108, 95, 23);
 		discountlist.setText("Rabatter");
 		discountlist.select(0);
 
