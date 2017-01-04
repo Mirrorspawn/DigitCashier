@@ -59,7 +59,7 @@ public class ReceiptDisplay {
 		composite_1.setLayout(new RowLayout(SWT.HORIZONTAL));
 		composite_1.setLayoutData(new RowData(532, 43));
 
-		Label lblOrgName = new Label(composite_1, SWT.NONE);
+		Label lblOrgName = new Label(composite_1, SWT.NONE); //org name
 		lblOrgName.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		lblOrgName.setAlignment(SWT.CENTER);
 		lblOrgName.setFont(SWTResourceManager.getFont("Bodoni MT", 15, SWT.BOLD));
@@ -78,10 +78,6 @@ public class ReceiptDisplay {
 		composite_2.setForeground(SWTResourceManager.getColor(176, 196, 222));
 		composite_2.setLayoutData(new RowData(530, 453));
 
-		//Label lblSaleInfo = new Label(composite_2, SWT.V_SCROLL);
-		//lblSaleInfo.setBounds(10, 30, 407, 263);
-		//lblSaleInfo.setText(CashRegister.getReceiptSaleInfo(CashRegister.saleItemList)); //info from cash register input
-
 		Label lbldate = new Label(composite_2, SWT.NONE);
 		lbldate.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		lbldate.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
@@ -89,7 +85,7 @@ public class ReceiptDisplay {
 		lbldate.setBounds(2, 0, 531, 30);
 		Receipt receipt = new Receipt();
 		lbldate.setText(receipt.getDate()); // shows date on receipt.
-		
+
 		text = new Text(composite_2, SWT.V_SCROLL);  //scroll function with info from cash register input, replaces previous static window
 		text.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
 		text.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));

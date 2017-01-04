@@ -1,30 +1,14 @@
 package se.humanus.DigitCashier;
-
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.ToolItem;
-
-import java.util.regex.Pattern;
-import java.util.*;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.wb.swt.SWTResourceManager;
-
-//import com.sun.xml.internal.ws.util.StringUtils;  //This import gave me an error message. The application works without it. What is it used for?
-
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
 
@@ -80,7 +64,7 @@ public class CashRegisterWindow {
 		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
 		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		lblDisplay.setBounds(255, 43, 373, 25);
-		
+
 		Text lblSaleDisplay = new Text(shlDigitcashierCashRegister, SWT.READ_ONLY | SWT.V_SCROLL | SWT.MULTI);
 		lblSaleDisplay.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
@@ -117,7 +101,7 @@ public class CashRegisterWindow {
 						else {
 							lblAntal.setText("Amount");// Changes text above Amount/Weight window appropriately
 						}
-						
+
 					}
 				}
 				else 
@@ -140,7 +124,7 @@ public class CashRegisterWindow {
 				String antalString = antalText.getText();  //gets the content of the input window for Amount/Weight.
 				String antalMatch; //Sets the regular expression for controlling what you can put into Amount.
 				String inputString = varuNrText.getText(); //gets the content of the input window for varuNr
-				
+
 				if (lblAntal.getText() == "Amount"){
 					antalMatch = "[0-9]{1,3}";
 				}
@@ -165,7 +149,7 @@ public class CashRegisterWindow {
 					lblDisplay.setText("Illegal value. ItemNr has to be two digits.");
 					return;
 				}
-				
+
 				//The following code, converts variables to the appropriate types and checks if the itemNr is valid
 				int itemNr = Integer.parseInt(inputString);
 				double amountOfItem = Double.parseDouble(antalString);
@@ -216,7 +200,7 @@ public class CashRegisterWindow {
 
 		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
 		btnKpKlart.setFont(SWTResourceManager.getFont("Segoe UI", 15, SWT.BOLD));
-		btnKpKlart.setBounds(16, 430, 219, 68);
+		btnKpKlart.setBounds(16, 432, 219, 68);
 		btnKpKlart.setText("Finalize \r\nSale");
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
@@ -228,11 +212,11 @@ public class CashRegisterWindow {
 					case "Cash":
 						lblDisplay.setText("No amount registered for Cash payment.");
 						break;
-						
+
 					case "Giftcard":
 						lblDisplay.setText("No amount registered for coupon.");
 						break;
-						
+
 					case "Creditcard":
 						changeInput.setText(String.valueOf(sum));
 						CashRegister.setChange(sum);
@@ -250,7 +234,7 @@ public class CashRegisterWindow {
 					CashRegister.clearSale();
 					lblSaleDisplay.setText("");
 					changeInput.setText("");
-					}
+				}
 			}
 		});
 
@@ -297,8 +281,8 @@ public class CashRegisterWindow {
 		btncalculate.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		btncalculate.setBounds(160, 254, 75, 31);
 		btncalculate.setText("Calculate");
-		
-		
+
+
 
 		btncalculate.addMouseListener(new MouseAdapter() {     //when calculate button is pressed, if statement is run to check if input field received a numeric value at or above total cost of purchase
 			@Override
