@@ -52,29 +52,34 @@ public class AdminWindow {
 	public void open() {
 		Display display = Display.getDefault();
 		Shell shlAdministration = new Shell();
-		shlAdministration.setSize(575, 417);
+		shlAdministration.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		shlAdministration.setSize(575, 425);
 		shlAdministration.setText("Administration");
 		
 		TabFolder tabFolder = new TabFolder(shlAdministration, SWT.NONE);
-		tabFolder.setBounds(0, 10, 549, 358);
+		tabFolder.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		tabFolder.setBounds(0, 10, 559, 359);
 		
 		TabItem tbtmVarugrupper = new TabItem(tabFolder, SWT.NONE);
 		tbtmVarugrupper.setText("Item Categories");
 		
-		Composite composite = new Composite(tabFolder, SWT.NONE);
+		Composite composite = new Composite(tabFolder, SWT.EMBEDDED);
+		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		tbtmVarugrupper.setControl(composite);
 		
 		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
+		lblMomsSatsLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblMomsSatsLabel.setText("VAT in percent:");
 		lblMomsSatsLabel.setBounds(261, 59, 87, 15);
 		
 		Label lblMeasuredText = new Label(composite, SWT.NONE);
+		lblMeasuredText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblMeasuredText.setText("Measured in weight?");
 		lblMeasuredText.setBounds(231, 84, 114, 15);
 		
 		Button buttonMeasure = new Button(composite, SWT.CHECK);
 		buttonMeasure.setEnabled(false);
-		buttonMeasure.setBounds(351, 83, 93, 16);
+		buttonMeasure.setBounds(351, 83, 13, 16);
 		
 		textCategoryName = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
 		textCategoryName.setBounds(351, 29, 150, 21);
@@ -97,6 +102,7 @@ public class AdminWindow {
 		CatCombo.setBounds(21, 29, 176, 23);
 		
 		Label lblNamn = new Label(composite, SWT.NONE);
+		lblNamn.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblNamn.setBounds(304, 32, 41, 15);
 		lblNamn.setText("Name:");
 		
@@ -116,21 +122,26 @@ public class AdminWindow {
 		tbtmVaror.setText("Items");
 		
 		Composite composite_1 = new Composite(tabFolder, SWT.NONE);
+		composite_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		tbtmVaror.setControl(composite_1);
 		
 		Label lblVaruIDText = new Label(composite_1, SWT.NONE);
+		lblVaruIDText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblVaruIDText.setBounds(240, 31, 55, 15);
 		lblVaruIDText.setText("Item ID");
 		
 		Label lblItemName = new Label(composite_1, SWT.NONE);
+		lblItemName.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblItemName.setBounds(239, 56, 55, 15);
 		lblItemName.setText("Name");
 		
 		Label lblPriceText = new Label(composite_1, SWT.NONE);
+		lblPriceText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblPriceText.setBounds(240, 82, 55, 15);
 		lblPriceText.setText("Price");
 		
 		Label lblNewLabel_2 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_2.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblNewLabel_2.setBounds(238, 109, 55, 15);
 		lblNewLabel_2.setText("Category");
 		
