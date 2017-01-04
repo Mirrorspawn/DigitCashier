@@ -88,19 +88,19 @@ public class CashRegisterWindow {
 
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblAntal.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
-		lblAntal.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblAntal.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		lblAntal.setBounds(16, 18, 62, 22);
 		lblAntal.setText(" Amount");
 
 		Label lblVarunr = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblVarunr.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
-		lblVarunr.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblVarunr.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		lblVarunr.setBounds(85, 18, 55, 22);
 		lblVarunr.setText(" ItemNr");
 
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
 		antalText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
-		antalText.setBounds(16, 43, 35, 31);
+		antalText.setBounds(16, 43, 62, 31);
 
 		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER | SWT.RIGHT);
 		varuNrText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
@@ -209,7 +209,7 @@ public class CashRegisterWindow {
 		betalningsmedel.setText("Payment Method");
 
 		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE); //label above drop-down menu
-		lblBetalningsmedel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblBetalningsmedel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		lblBetalningsmedel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblBetalningsmedel.setText(" Choose Payment Method");
 		lblBetalningsmedel.setBounds(16, 326, 172, 23);
@@ -258,7 +258,7 @@ public class CashRegisterWindow {
 
 		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount /SH
 		lblRabbater.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
-		lblRabbater.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblRabbater.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		lblRabbater.setText(" Discount");
 		lblRabbater.setBounds(16, 122, 65, 23);
 
@@ -289,7 +289,7 @@ public class CashRegisterWindow {
 
 		Label lblVxel = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblVxel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
-		lblVxel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblVxel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
 		lblVxel.setText(" Amount Paid");
 		lblVxel.setBounds(16, 225, 96, 23);
 

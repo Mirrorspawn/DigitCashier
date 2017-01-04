@@ -11,6 +11,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class CatEditWindow {
 	private Text textName;
@@ -36,26 +37,35 @@ public class CatEditWindow {
 	public void open() {
 		Display display = Display.getDefault();
 		Shell shlEditCategory = new Shell();
-		shlEditCategory.setSize(297, 202);
+		shlEditCategory.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		shlEditCategory.setSize(364, 238);
 		shlEditCategory.setText("Redigera Varugrupp");
 		
 		Label lblNewLabel = new Label(shlEditCategory, SWT.NONE);
-		lblNewLabel.setBounds(16, 15, 95, 15);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		lblNewLabel.setBounds(16, 15, 116, 22);
 		lblNewLabel.setText("Category Name:");
 		
 		Label lblNewLabel_1 = new Label(shlEditCategory, SWT.NONE);
-		lblNewLabel_1.setBounds(16, 46, 112, 15);
+		lblNewLabel_1.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblNewLabel_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		lblNewLabel_1.setBounds(16, 46, 132, 21);
 		lblNewLabel_1.setText("Moms-sats procent:");
 		
 		Label lblNewLabel_2 = new Label(shlEditCategory, SWT.NONE);
-		lblNewLabel_2.setBounds(16, 78, 55, 15);
+		lblNewLabel_2.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblNewLabel_2.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		lblNewLabel_2.setBounds(16, 78, 55, 21);
 		lblNewLabel_2.setText("Pris per:");
 		
 		textName = new Text(shlEditCategory, SWT.BORDER); //Display for the name of the chosen category
-		textName.setBounds(149, 15, 112, 21);
+		textName.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textName.setBounds(150, 15, 112, 25);
 		textName.setText(AdminWindow.currentCategory.getCategoryName());
 		
 		textMoms = new Text(shlEditCategory, SWT.BORDER);//Display for the VAT percentage of the chosen category
+		textMoms.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		textMoms.addVerifyListener(new VerifyListener() {
 			public void verifyText(VerifyEvent e) {
 				//Checks that only numbers are entered in this textbox
@@ -69,15 +79,17 @@ public class CatEditWindow {
 				}
 			}
 		});
-		textMoms.setBounds(149, 45, 112, 21);
+		textMoms.setBounds(150, 45, 112, 25);
 		textMoms.setText(String.valueOf((Math.round(AdminWindow.currentCategory.getSalesTax()*100))));
 		
 		CCombo comboMeasure = new CCombo(shlEditCategory, SWT.BORDER); //ComboBox to display and choose if measured in weight or amount
+		comboMeasure.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		comboMeasure.setItems(new String[] {"Amount", "Weight (Kg)"});
-		comboMeasure.setBounds(149, 78, 75, 21);
+		comboMeasure.setBounds(150, 74, 112, 25);
 		comboMeasure.select((AdminWindow.currentCategory.getMeasuredInWeight()==false)?0:1);
 		
 		Button btnConfirm = new Button(shlEditCategory, SWT.NONE);
+		btnConfirm.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		btnConfirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -100,17 +112,18 @@ public class CatEditWindow {
 				shlEditCategory.close();				
 			}
 		});
-		btnConfirm.setBounds(16, 123, 103, 25);
+		btnConfirm.setBounds(14, 145, 125, 30);
 		btnConfirm.setText("Confirm Changes");
 		
 		Button btnCancel = new Button(shlEditCategory, SWT.NONE);
+		btnCancel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				shlEditCategory.close();
 			}
 		});
-		btnCancel.setBounds(186, 123, 75, 25);
+		btnCancel.setBounds(236, 145, 75, 30);
 		btnCancel.setText("Cancel");
 
 		shlEditCategory.open();

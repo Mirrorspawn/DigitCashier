@@ -53,12 +53,12 @@ public class AdminWindow {
 		Display display = Display.getDefault();
 		Shell shlAdministration = new Shell();
 		shlAdministration.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		shlAdministration.setSize(575, 425);
+		shlAdministration.setSize(575, 345);
 		shlAdministration.setText("Administration");
 		
 		TabFolder tabFolder = new TabFolder(shlAdministration, SWT.NONE);
 		tabFolder.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		tabFolder.setBounds(0, 10, 559, 359);
+		tabFolder.setBounds(0, 10, 559, 274);
 		
 		TabItem tbtmVarugrupper = new TabItem(tabFolder, SWT.NONE);
 		tbtmVarugrupper.setText("Item Categories");
@@ -68,26 +68,31 @@ public class AdminWindow {
 		tbtmVarugrupper.setControl(composite);
 		
 		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
+		lblMomsSatsLabel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblMomsSatsLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblMomsSatsLabel.setText("VAT in percent:");
-		lblMomsSatsLabel.setBounds(261, 59, 87, 15);
+		lblMomsSatsLabel.setBounds(242, 60, 107, 19);
 		
 		Label lblMeasuredText = new Label(composite, SWT.NONE);
+		lblMeasuredText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblMeasuredText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
 		lblMeasuredText.setText("Measured in weight?");
-		lblMeasuredText.setBounds(231, 84, 114, 15);
+		lblMeasuredText.setBounds(208, 85, 137, 21);
 		
 		Button buttonMeasure = new Button(composite, SWT.CHECK);
 		buttonMeasure.setEnabled(false);
-		buttonMeasure.setBounds(351, 83, 13, 16);
+		buttonMeasure.setBounds(351, 88, 13, 16);
 		
 		textCategoryName = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
-		textCategoryName.setBounds(351, 29, 150, 21);
+		textCategoryName.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textCategoryName.setBounds(350, 30, 150, 25);
 		
 		textMoms = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
-		textMoms.setBounds(351, 56, 150, 21);
+		textMoms.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textMoms.setBounds(350, 60, 150, 25);
 		
 		Combo CatCombo = new Combo(composite, SWT.READ_ONLY);
+		CatCombo.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		CatCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -102,11 +107,13 @@ public class AdminWindow {
 		CatCombo.setBounds(21, 29, 176, 23);
 		
 		Label lblNamn = new Label(composite, SWT.NONE);
+		lblNamn.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblNamn.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		lblNamn.setBounds(304, 32, 41, 15);
+		lblNamn.setBounds(296, 32, 49, 21);
 		lblNamn.setText("Name:");
 		
 		Button btnCatEdit = new Button(composite, SWT.NONE);
+		btnCatEdit.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		btnCatEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -116,7 +123,7 @@ public class AdminWindow {
 			}
 		});
 		btnCatEdit.setText("Edit Category");
-		btnCatEdit.setBounds(21, 208, 99, 25);
+		btnCatEdit.setBounds(21, 193, 107, 35);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
 		tbtmVaror.setText("Items");
@@ -126,38 +133,47 @@ public class AdminWindow {
 		tbtmVaror.setControl(composite_1);
 		
 		Label lblVaruIDText = new Label(composite_1, SWT.NONE);
+		lblVaruIDText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblVaruIDText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		lblVaruIDText.setBounds(240, 31, 55, 15);
-		lblVaruIDText.setText("Item ID");
+		lblVaruIDText.setBounds(228, 30, 55, 19);
+		lblVaruIDText.setText("Item ID:");
 		
 		Label lblItemName = new Label(composite_1, SWT.NONE);
+		lblItemName.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblItemName.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		lblItemName.setBounds(239, 56, 55, 15);
-		lblItemName.setText("Name");
+		lblItemName.setBounds(228, 57, 55, 20);
+		lblItemName.setText("Name:");
 		
 		Label lblPriceText = new Label(composite_1, SWT.NONE);
+		lblPriceText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblPriceText.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		lblPriceText.setBounds(240, 82, 55, 15);
-		lblPriceText.setText("Price");
+		lblPriceText.setBounds(228, 83, 55, 21);
+		lblPriceText.setText("Price:");
 		
 		Label lblNewLabel_2 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_2.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		lblNewLabel_2.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		lblNewLabel_2.setBounds(238, 109, 55, 15);
-		lblNewLabel_2.setText("Category");
+		lblNewLabel_2.setBounds(228, 108, 68, 20);
+		lblNewLabel_2.setText("Category:");
 		
 		textVaruID = new Text(composite_1, SWT.BORDER | SWT.READ_ONLY);
-		textVaruID.setBounds(299, 28, 140, 21);
+		textVaruID.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textVaruID.setBounds(300, 28, 140, 24);
 		
 		textItemName = new Text(composite_1, SWT.BORDER | SWT.READ_ONLY);
-		textItemName.setBounds(299, 54, 140, 21);
+		textItemName.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textItemName.setBounds(300, 55, 140, 24);
 		
 		textPrice = new Text(composite_1, SWT.BORDER | SWT.READ_ONLY);
-		textPrice.setBounds(299, 79, 140, 21);
+		textPrice.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textPrice.setBounds(300, 82, 140, 24);
 		
 		textItemCategory = new Text(composite_1, SWT.BORDER | SWT.READ_ONLY);
-		textItemCategory.setBounds(299, 106, 140, 21);
+		textItemCategory.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		textItemCategory.setBounds(300, 109, 140, 23);
 		
 		Combo comboVara = new Combo(composite_1, SWT.READ_ONLY);
+		comboVara.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		comboVara.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -173,6 +189,7 @@ public class AdminWindow {
 		comboVara.setItems(Administration.getItemList());
 		
 		Button btnItemEdit = new Button(composite_1, SWT.NONE);
+		btnItemEdit.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		btnItemEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -181,7 +198,7 @@ public class AdminWindow {
 				ItemEditWindow.createNewWindow();
 			}
 		});
-		btnItemEdit.setBounds(34, 197, 99, 25);
+		btnItemEdit.setBounds(34, 197, 99, 28);
 		btnItemEdit.setText("Edit Item");
 		
 		Menu menu = new Menu(shlAdministration, SWT.BAR);
