@@ -138,7 +138,7 @@ public class CashRegisterWindow {
 			public void mouseDown(MouseEvent e) {
 
 				String antalString = antalText.getText();  //gets the content of the input window for Amount/Weight.
-				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into Amount.
+				String antalMatch; //Sets the regular expression for controlling what you can put into Amount.
 				String inputString = varuNrText.getText(); //gets the content of the input window for varuNr
 				
 				if (lblAntal.getText() == "Amount"){
