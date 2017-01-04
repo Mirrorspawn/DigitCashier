@@ -26,7 +26,6 @@ public class AdminWindow {
 	private Text textVaruID;
 	private Text textPrice;
 	private Text textMoms;
-	private Text textMeasure;
 	private Text textCategoryName;
 	private Text textItemName;
 	
@@ -67,20 +66,21 @@ public class AdminWindow {
 		
 		Label lblMomsSatsLabel = new Label(composite, SWT.NONE);
 		lblMomsSatsLabel.setText("VAT in percent:");
-		lblMomsSatsLabel.setBounds(226, 59, 87, 15);
+		lblMomsSatsLabel.setBounds(261, 59, 87, 15);
 		
 		Label lblMeasuredText = new Label(composite, SWT.NONE);
-		lblMeasuredText.setText("Measured in:");
-		lblMeasuredText.setBounds(226, 83, 73, 15);
+		lblMeasuredText.setText("Measured in weight?");
+		lblMeasuredText.setBounds(231, 84, 114, 15);
+		
+		Button buttonMeasure = new Button(composite, SWT.CHECK);
+		buttonMeasure.setEnabled(false);
+		buttonMeasure.setBounds(351, 83, 93, 16);
 		
 		textCategoryName = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
-		textCategoryName.setBounds(319, 29, 150, 21);
+		textCategoryName.setBounds(351, 29, 150, 21);
 		
 		textMoms = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
-		textMoms.setBounds(319, 56, 150, 21);
-		
-		textMeasure = new Text(composite, SWT.BORDER | SWT.READ_ONLY);
-		textMeasure.setBounds(319, 81, 150, 21);
+		textMoms.setBounds(351, 56, 150, 21);
 		
 		Combo CatCombo = new Combo(composite, SWT.READ_ONLY);
 		CatCombo.addSelectionListener(new SelectionAdapter() {
@@ -90,14 +90,14 @@ public class AdminWindow {
 				currentCategory = CashRegister.categoryList.get(CatCombo.getSelectionIndex());
 				textCategoryName.setText(currentCategory.getCategoryName());
 				textMoms.setText(String.valueOf(currentCategory.getSalesTax()*100));
-				textMeasure.setText(currentCategory.getMeasuredInWeight().toString());				
+				buttonMeasure.setSelection(currentCategory.getMeasuredInWeight());			
 			}
 		});
 		CatCombo.setItems(Administration.getCategoryList()); //Gets the selection items.
-		CatCombo.setBounds(31, 29, 176, 23);
+		CatCombo.setBounds(21, 29, 176, 23);
 		
 		Label lblNamn = new Label(composite, SWT.NONE);
-		lblNamn.setBounds(227, 36, 55, 15);
+		lblNamn.setBounds(304, 32, 41, 15);
 		lblNamn.setText("Name:");
 		
 		Button btnCatEdit = new Button(composite, SWT.NONE);
@@ -110,7 +110,7 @@ public class AdminWindow {
 			}
 		});
 		btnCatEdit.setText("Edit Category");
-		btnCatEdit.setBounds(31, 209, 99, 25);
+		btnCatEdit.setBounds(21, 208, 99, 25);
 		
 		TabItem tbtmVaror = new TabItem(tabFolder, SWT.NONE);
 		tbtmVaror.setText("Items");
@@ -182,12 +182,6 @@ public class AdminWindow {
 		Menu menu_1 = new Menu(mntmFile);
 		mntmFile.setMenu(menu_1);
 		
-		MenuItem mntmCreateNewCategory = new MenuItem(menu_1, SWT.NONE);
-		mntmCreateNewCategory.setText("Create New Category");
-		
-		MenuItem mntmCreateNewItem = new MenuItem(menu_1, SWT.NONE);
-		mntmCreateNewItem.setText("Create New Item");
-		
 		MenuItem mntmSaveCurrentCategories = new MenuItem(menu_1, SWT.NONE);
 		mntmSaveCurrentCategories.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -212,6 +206,4 @@ public class AdminWindow {
 			
 		
 	}
-	
-	
 }
