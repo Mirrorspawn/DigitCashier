@@ -12,6 +12,7 @@ public class DataManagement {
 	private static String saveFileName = "DigitCashierSaveData.txt";
 	
 	public static void initialize() throws FileNotFoundException, IOException{
+		//tries to create a save-file and prints message to console if one already exists
 		try{
 			Files.createFile(savePath);	
 		}
@@ -23,11 +24,13 @@ public class DataManagement {
 	}
 	
 	private static void loadDefaults(){
+		//Runs default initializations of categories and items
 		CashRegister.initializeCategories();
 		CashRegister.initializeItems();
 	}
 	
 	public static void saveData() throws IOException{
+		//Saves the categories and items to the savefile
 		int nrOfCategories= CashRegister.getLengthOfCategoryList();
 		int nrOfItems = CashRegister.getLengthOfItemList();
 		
@@ -63,7 +66,7 @@ public class DataManagement {
 	public static void LoadData() throws FileNotFoundException{
 		//This method loads data from the saveDatafile
 		String categoryName;
-		String tempString; //String to test stuff, remove from final code
+		String tempString;
 		double salesTax;
 		boolean weight;
 		int categoryNr;
@@ -71,14 +74,15 @@ public class DataManagement {
 		double price;
 		
 		Scanner scan = new Scanner(new File(saveFileName));
-		if (!scan.hasNext()) {//Checks if there is any data in the file, and if there isn't loads the hard-coded defaults.
+		if (!scan.hasNext()) {
+			//Checks if there is any data in the file, and if there isn't loads the hard-coded defaults.
 			System.out.println("No previous save file. Loading default Categories and Items.");
 			loadDefaults();
 			scan.close();
 			return;
 		}
 		if (scan.nextLine().equals("CategoryListStart")){
-			//Checks that there is a CategoryList in the savefile, and if there isn't, loads hard-coded defaults.
+			//Checks that there is a CategoryList in the save file, and if there is creates the categories.
 			int nrOfCategories = Integer.parseInt(scan.nextLine());
 			for (int i=0;i<nrOfCategories;i++){
 				categoryName = scan.nextLine();
@@ -94,6 +98,7 @@ public class DataManagement {
 			}
 		}
 		else {
+			//Loads defaults if there is no CategoryList in the save file.
 			System.out.println("Categories not loaded because of incorrect save file. Using default Categories and Items.");
 			loadDefaults();
 			scan.close();
@@ -107,6 +112,7 @@ public class DataManagement {
 		}
 		
 		if (scan.nextLine().equals("ItemListStart")){
+			//Checks that there is an ItemList and creates Items if there is
 			int nrOfItems = Integer.parseInt(scan.nextLine());
 			for (int i=0;i<nrOfItems;i++){
 				tempString= scan.nextLine();
@@ -124,9 +130,11 @@ public class DataManagement {
 			}
 		}
 		else {
+			//Aborts load and loads default items if there is no ItemList start-marker
 			System.out.println("Items not loaded because of incorrect save file.");
 		}
 		if (!scan.nextLine().equals("ItemListEnd")){
+			//Aborts file-load and loads defaults if there is no proper end-marker in the save file.
 			System.out.println("ItemList not ended properly in save file. Load aborted");
 			scan.close();
 			return; 

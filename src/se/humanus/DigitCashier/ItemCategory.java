@@ -37,13 +37,15 @@ public class ItemCategory {
 		itemsInCategory.add(item);		
 	}
 	
-	public void removeItemFromCategory(Item item) { //Not tested. Removes an item from the category's list of items.
+	public void removeItemFromCategory(Item item) { 
+		//Removes an item from the category's list of items.
 		if(itemsInCategory.contains(item)) {
 			itemsInCategory.remove(itemsInCategory.indexOf(item));
 		}
 	}
 	
 	public boolean isItemInCategory(Item item) {
+		//returns True if the passed Item is present in the category
 		boolean itemPresent=false;
 		for (Item i:itemsInCategory){
 			if (i==item){
@@ -54,6 +56,7 @@ public class ItemCategory {
 	}
 	
 	public ItemCategory(String name, double taxMod, Boolean weight) {
+		//Standard Constructor
 		this.categoryName=name;
 		this.salesTaxMod=taxMod;
 		this.measuredInWeight=weight;

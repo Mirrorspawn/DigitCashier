@@ -10,7 +10,8 @@ public class Item {
 	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
 	private ItemCategory myCategory; //The category this item belongs to
 	
-	public void assignToCategory(ItemCategory ic) { //Not yet tested, but should work. Not needed until we do adminstuff
+	public void assignToCategory(ItemCategory ic) {
+		//Assigns the item to a new category
 		myCategory.removeItemFromCategory(this);
 		ic.addItemToCategory(this);
 		myCategory = ic;

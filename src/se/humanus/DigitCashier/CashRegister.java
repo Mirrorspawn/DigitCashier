@@ -101,7 +101,8 @@ public class CashRegister {
 
 
 	public static void initializeCategories() {
-		//Hardcoded creation of default item categories. This is called if load from data-file, fails at any point. /JS
+		//Hardcoded creation of default item categories. This is called if load from data-file fails at any point. /JS
+		//If we re-did this project I would put this method in the Category Class instead and get the list from there.
 		categoryList.clear();
 		categoryList.add(new ItemCategory("Mejeri", 0.12d, false));
 		categoryList.add(new ItemCategory("Frukt och Grönt", 0.12d, true));
@@ -117,7 +118,7 @@ public class CashRegister {
 
 	public static void initializeItems() {
 		//Hardcoded creation of default items. This is called if the load from data-file, fails at any point. /JS
-
+		//If I re-did this project I would put this as a static method in the Item Class instead and get the list from there.
 		itemList.add(new Item(categoryList.get(0),"01","Standardmjölk, 1l", 9.10d));
 		itemList.add(new Item(categoryList.get(0),"02","Creme Fraiche 34%, 5dl", 19.95d));
 		itemList.add(new Item(categoryList.get(5),"03","Kronjäst Färsk, 50g", 2.50d));
@@ -144,22 +145,12 @@ public class CashRegister {
 		itemList.add(new Item(categoryList.get(1),"24","Potatis, Sverige", 32.95d));
 		itemList.add(new Item(categoryList.get(1),"25","Lime, Brasilien", 3.80d));
 
-		//The call below is only used to check that the above list of objects have been created correctly.
-		//It, and the method it calls, are commented out when I don't want to use them. Will be removed for the final
-		//version of the application.
-		//checkInitialize();
-
 	}
 
 	public static void createNewItem (ItemCategory itemCat,String itemID, String itemName, double itemPrice) {
-		//Method to create a new Item
+		//Creates a new Item
 		itemList.add(new Item(itemCat, itemID, itemName, itemPrice));
 	}
-
-	/*public static void initializeReceipt(){ 
-		//Method for setting any info on the receipt that is the same every time. I've done orgName and orgNr to show what I mean.
-		Receipt.setOrganization(orgName,orgNr);
-	}*/
 
 	public static double calculateSum(){     //summation + amount of items calculation
 		double totalPrice = 0;
@@ -211,6 +202,7 @@ public class CashRegister {
 	}
 
 	public static Item getLatestItem() {
+		//Returns the last item added to the sale
 		return saleItemList.get(getLengthOfSaleItemList()-1);
 	}
 
@@ -245,8 +237,7 @@ public class CashRegister {
 		saleItemList.clear();
 		amountOfItemList.clear();
 		setTotal(0.0d);
-		setBetalningsmedel("");
-		
+		setBetalningsmedel("");	
 	}
 
 	public static double getTotalVAT(List<Item> saleItemList) {	
@@ -268,7 +259,8 @@ public class CashRegister {
 		return f;
 	}
 
-	public static String getReceiptSaleInfo(List<Item> saleItemList) {                  //shows a list of purchased items and item amount on receipt with a linebreak for each item /SH
+	public static String getReceiptSaleInfo(List<Item> saleItemList) {                  
+		//shows a list of purchased items and item amount on receipt with a linebreak for each item /SH
 		String receiptitemlist = "";
 		for(int i = 0; i < saleItemList.size(); i++) {
 

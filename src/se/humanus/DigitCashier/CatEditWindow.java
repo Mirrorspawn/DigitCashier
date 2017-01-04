@@ -51,13 +51,14 @@ public class CatEditWindow {
 		lblNewLabel_2.setBounds(16, 78, 55, 15);
 		lblNewLabel_2.setText("Pris per:");
 		
-		textName = new Text(shlEditCategory, SWT.BORDER);
+		textName = new Text(shlEditCategory, SWT.BORDER); //Display for the name of the chosen category
 		textName.setBounds(149, 15, 112, 21);
 		textName.setText(AdminWindow.currentCategory.getCategoryName());
 		
-		textMoms = new Text(shlEditCategory, SWT.BORDER);
+		textMoms = new Text(shlEditCategory, SWT.BORDER);//Display for the VAT percentage of the chosen category
 		textMoms.addVerifyListener(new VerifyListener() {
 			public void verifyText(VerifyEvent e) {
+				//Checks that only numbers are entered in this textbox
 				String string = e.text;
 				char[] chars = new char[string.length()];
 				string.getChars(0,  chars.length, chars, 0);
@@ -71,8 +72,8 @@ public class CatEditWindow {
 		textMoms.setBounds(149, 45, 112, 21);
 		textMoms.setText(String.valueOf((Math.round(AdminWindow.currentCategory.getSalesTax()*100))));
 		
-		CCombo comboMeasure = new CCombo(shlEditCategory, SWT.BORDER);
-		comboMeasure.setItems(new String[] {"Vara", "Vikt (Kg)"});
+		CCombo comboMeasure = new CCombo(shlEditCategory, SWT.BORDER); //ComboBox to display and choose if measured in weight or amount
+		comboMeasure.setItems(new String[] {"Amount", "Weight (Kg)"});
 		comboMeasure.setBounds(149, 78, 75, 21);
 		comboMeasure.select((AdminWindow.currentCategory.getMeasuredInWeight()==false)?0:1);
 		
@@ -80,6 +81,7 @@ public class CatEditWindow {
 		btnConfirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
+				//Collects the info from the textboxes and sends it to the updateCategory method
 				boolean measureWeight;
 				String catName = textName.getText();
 				int tempMoms = Integer.parseInt(textMoms.getText());
@@ -99,7 +101,7 @@ public class CatEditWindow {
 			}
 		});
 		btnConfirm.setBounds(16, 123, 103, 25);
-		btnConfirm.setText("G\u00F6r \u00C4ndringar");
+		btnConfirm.setText("Confirm Changes");
 		
 		Button btnCancel = new Button(shlEditCategory, SWT.NONE);
 		btnCancel.addMouseListener(new MouseAdapter() {
@@ -109,7 +111,7 @@ public class CatEditWindow {
 			}
 		});
 		btnCancel.setBounds(186, 123, 75, 25);
-		btnCancel.setText("Avbryt");
+		btnCancel.setText("Cancel");
 
 		shlEditCategory.open();
 		shlEditCategory.layout();

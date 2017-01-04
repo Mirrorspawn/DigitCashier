@@ -101,21 +101,21 @@ public class CashRegisterWindow {
 			public void modifyText(ModifyEvent arg0) {
 				String testString = varuNrText.getText();
 
-				if (testString.matches("[0-9]{2}")) { //Kollar om det är exakt två siffror i VaruNr
-					int itemNr = Integer.parseInt(testString); //Omvandlar strängen från VaruNr till Integer
-					if (itemNr < CashRegister.getLengthOfItemList()){//kollar så att siffran inte är högre än högsta varunr.
-						if(CashRegister.checkIfWeight(itemNr)) { //Frågar om den inslagna koden motsvarar en vara som skall mätas i vikt
-							lblAntal.setText("Weight");// Sätter texten ovanför Antal/Vikt fönstret
+				if (testString.matches("[0-9]{2}")) { //Checks if there are exactly two digits in the input-field
+					int itemNr = Integer.parseInt(testString);
+					if (itemNr < CashRegister.getLengthOfItemList()){//Checks so that the number isn't higher than the highest known item ID.
+						if(CashRegister.checkIfWeight(itemNr)) { //Asks checkIfWeight if the item is measured in weight
+							lblAntal.setText("Weight");// Changes text above Amount/Weight window appropriately
 						}
 						else {
-							lblAntal.setText("Amount");// Sätter texten ovanför Antal/Vikt fönstret
+							lblAntal.setText("Amount");// Changes text above Amount/Weight window appropriately
 						}
 						
 					}
 				}
 				else 
 				{
-					lblAntal.setText("Amount");// Sätter texten ovanför Antal/Vikt fönstret
+					lblAntal.setText("Amount");// Changes text above Amount/Weight window appropriately
 				}
 
 			}
@@ -129,11 +129,9 @@ public class CashRegisterWindow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 
-				String antalString = antalText.getText();  //gets the content of the inputwindow for antal/vikt.
-				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into antal.
-				String inputString = varuNrText.getText(); //gets the content of the inputwindow for varuNr
-
-
+				String antalString = antalText.getText();  //gets the content of the input window for Amount/Weight.
+				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into Amount.
+				String inputString = varuNrText.getText(); //gets the content of the input window for varuNr
 
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
@@ -143,27 +141,30 @@ public class CashRegisterWindow {
 					return;
 				}
 				if (!antalString.matches(antalMatch)) {
+					//Displays warning if the amount does not match the regular expression for amount
 					lblDisplay.setText("Illegal amount/weight");
 					return;
 				}
 				if (!inputString.matches("[0-9]{2}")) {
+					//Displays warning if the amount does not consist of precisely two digits
 					lblDisplay.setText("Illegal value. ItemNr has to be two digits.");
 					return;
 				}
-
-				int itemNr = Integer.parseInt(inputString); //converts itemNr to an Integer
-				double amountOfItem = Double.parseDouble(antalString);//converts amountOfItem to a float value
-				System.out.println(itemNr); //testline to see what number has been detected. Remove from final code.
-				int upperBounds = CashRegister.getLengthOfItemList(); //Sets upperBounds to the number of products in the productlist
-				if (itemNr<1||itemNr>upperBounds) { //checks if the text in varuNr is at least 1 and no greater than upperBounds.
+				
+				//The following code, converts variables to the appropriate types and checks if the itemNr is valid
+				int itemNr = Integer.parseInt(inputString);
+				double amountOfItem = Double.parseDouble(antalString);
+				int upperBounds = CashRegister.getLengthOfItemList();
+				if (itemNr<1||itemNr>upperBounds) {
+					//Displays error Message if itemNr is less than one or larger than the highest ItemNr
 					lblDisplay.setText("No such ItemNr.");					
 				}
 				else {
+					//Adds Item to sale if it has passed all the checks above.
 					lblDisplay.setText("");
 					CashRegister.addItemToSale(amountOfItem,itemNr);
 					System.out.println("Added " + amountOfItem + " of item " + itemNr);//Testline to see that this has worked. Remove from final code.
 					String itemAdded = (CashRegister.getLatestItem()).toString();
-					System.out.println(itemAdded);//testline. Remove from final code
 					String itemLine = amountOfItem + " x " + itemAdded;
 					lblDisplay.setText(amountOfItem +" x "+ itemAdded);
 					lblSaleDisplay.append(itemLine + "\n");
@@ -181,9 +182,6 @@ public class CashRegisterWindow {
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
 		lblNewLabel_1.setBounds(220, 23, 71, 16);
 		lblNewLabel_1.setText("Display");
-
-
-
 
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
 		betalningsmedel.setItems(new String[] {"Creditcard", "Cash", "Giftcard"});

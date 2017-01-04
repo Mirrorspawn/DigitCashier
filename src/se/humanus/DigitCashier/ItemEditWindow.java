@@ -81,15 +81,15 @@ public class ItemEditWindow {
 		combo.select(combo.indexOf(AdminWindow.currentItem.getMyCategory().getCategoryName()));
 		
 		
-		textItemName = new Text(shlRedigeraVara, SWT.BORDER);
+		textItemName = new Text(shlRedigeraVara, SWT.BORDER); //Displays the name of the Item
 		textItemName.setBounds(106, 32, 178, 21);
 		textItemName.setText(AdminWindow.currentItem.getName());
 		
-		textIDnr = new Text(shlRedigeraVara, SWT.BORDER);
+		textIDnr = new Text(shlRedigeraVara, SWT.BORDER); //Displays the IDnr of the item
 		textIDnr.setBounds(106, 105, 76, 21);
 		textIDnr.setText(AdminWindow.currentItem.getId());
 		
-		textPris = new Text(shlRedigeraVara, SWT.BORDER);
+		textPris = new Text(shlRedigeraVara, SWT.BORDER); //Displays the Price of the item
 		textPris.setBounds(106, 142, 76, 21);
 		textPris.setText(String.valueOf(AdminWindow.currentItem.getPrice()));
 		
@@ -109,7 +109,7 @@ public class ItemEditWindow {
 			}
 		});
 		btnConfirm.setBounds(37, 195, 108, 25);
-		btnConfirm.setText("Spara \u00C4ndringar");
+		btnConfirm.setText("Confirm Changes");
 		
 		Button btnCancel = new Button(shlRedigeraVara, SWT.NONE);
 		btnCancel.addMouseListener(new MouseAdapter() {
@@ -119,7 +119,7 @@ public class ItemEditWindow {
 			}
 		});
 		btnCancel.setBounds(225, 195, 75, 25);
-		btnCancel.setText("Avbryt");
+		btnCancel.setText("Cancel");
 
 	}
 }

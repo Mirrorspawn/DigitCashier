@@ -86,13 +86,14 @@ public class AdminWindow {
 		CatCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				//Gets the information for the selected Category and displays its attributes.
 				currentCategory = CashRegister.categoryList.get(CatCombo.getSelectionIndex());
 				textCategoryName.setText(currentCategory.getCategoryName());
 				textMoms.setText(String.valueOf(currentCategory.getSalesTax()*100));
 				textMeasure.setText(currentCategory.getMeasuredInWeight().toString());				
 			}
 		});
-		CatCombo.setItems(Administration.getCategoryList());
+		CatCombo.setItems(Administration.getCategoryList()); //Gets the selection items.
 		CatCombo.setBounds(31, 29, 176, 23);
 		
 		Label lblNamn = new Label(composite, SWT.NONE);
@@ -103,6 +104,7 @@ public class AdminWindow {
 		btnCatEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
+				//Opens a new edit window for Categories and sets the selected Category as the Category to be edited
 				Administration.setCurrentCategory(currentCategory);
 				CatEditWindow.createNewWindow();
 			}
@@ -148,10 +150,10 @@ public class AdminWindow {
 		comboVara.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				//Gets the information for the selected Item and displays its attributes.
 				currentItem = CashRegister.itemList.get(comboVara.getSelectionIndex());
 				textVaruID.setText(String.valueOf(currentItem.getId()));
 				textItemName.setText(currentItem.getName());
-				//System.out.println(it.getMyCategory().getCategoryName().toString()); //Testrad
 				textItemCategory.setText((currentItem.getMyCategory()).getCategoryName());
 				textPrice.setText(String.valueOf(currentItem.getPrice()));
 			}
@@ -163,6 +165,7 @@ public class AdminWindow {
 		btnItemEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
+				//Opens a new edit window for Items and sets the selected Item as the Item to be edited
 				Administration.setCurrentItem(currentItem);
 				ItemEditWindow.createNewWindow();
 			}
@@ -189,6 +192,7 @@ public class AdminWindow {
 		mntmSaveCurrentCategories.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				//Saves the current data of all Categories and Items to file. 
 				try {
 					DataManagement.saveData();
 				} catch (IOException e1) {
