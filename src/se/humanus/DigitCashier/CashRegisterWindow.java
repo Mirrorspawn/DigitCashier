@@ -132,6 +132,13 @@ public class CashRegisterWindow {
 				String antalString = antalText.getText();  //gets the content of the input window for Amount/Weight.
 				String antalMatch = "[0-9]{1,3}"; //Sets the regular expression for controlling what you can put into Amount.
 				String inputString = varuNrText.getText(); //gets the content of the input window for varuNr
+				
+				if (lblAntal.getText() == "Amount"){
+					antalMatch = "[0-9]{1,3}";
+				}
+				else {
+					antalMatch = "[0-9]*?(\\.[0-9]{1,2})?";
+				}
 
 				if(inputString.equals("#2#")) { // Code for the #2# function. AF
 					System.out.println("show total items here..");
@@ -146,7 +153,7 @@ public class CashRegisterWindow {
 					return;
 				}
 				if (!inputString.matches("[0-9]{2}")) {
-					//Displays warning if the amount does not consist of precisely two digits
+					//Displays warning if the amount is more than to digits
 					lblDisplay.setText("Illegal value. ItemNr has to be two digits.");
 					return;
 				}
