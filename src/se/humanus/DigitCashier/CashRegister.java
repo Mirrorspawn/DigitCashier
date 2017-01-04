@@ -16,7 +16,7 @@ public class CashRegister {
 	static double change = 0;
 	static double total = 0;
 	static String betalningsmedel="";
-	static String voucherNr = ""; //this and all variables below it are part of the voucher number creation /SH
+	static String voucherNr = ""; //this and all variables below it are part of the voucher number creation, composed out of date + increasing number /SH
 	static int voucherCount = 00000;
 	static Calendar cal = Calendar.getInstance();
 	static int date = cal.get(Calendar.DATE);
@@ -232,7 +232,7 @@ public class CashRegister {
 		double amount = amountOfItemList.get(nrInSale-1);
 		return amount;
 	}
-	
+
 	public static void clearSale (){
 		saleItemList.clear();
 		amountOfItemList.clear();
@@ -253,7 +253,7 @@ public class CashRegister {
 	}
 
 	private static double roundCash(double f) {
-		int a = (int) (f * 100); // Code to limit the decimal numbers to 2
+		int a = (int) (f * 100); // Code to limit the decimal numbers to 2 for money/price related variables
 		f = a / 100.0d;
 
 		return f;
