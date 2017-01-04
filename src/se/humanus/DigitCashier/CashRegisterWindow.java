@@ -71,32 +71,39 @@ public class CashRegisterWindow {
 	 */
 	protected void createContents() {
 		shlDigitcashierCashRegister = new Shell();
-		shlDigitcashierCashRegister.setSize(610, 364);
+		shlDigitcashierCashRegister.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
+		shlDigitcashierCashRegister.setSize(679, 569);
 		shlDigitcashierCashRegister.setText("DigitCashier Cash Register");
 
 		Label lblDisplay = new Label(shlDigitcashierCashRegister, SWT.BORDER);
 		lblDisplay.setAlignment(SWT.CENTER);
 		lblDisplay.setFont(SWTResourceManager.getFont("Calibri", 12, SWT.NORMAL));
-		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblDisplay.setBounds(220, 43, 316, 25);
+		lblDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblDisplay.setBounds(255, 43, 373, 25);
 		
 		Text lblSaleDisplay = new Text(shlDigitcashierCashRegister, SWT.READ_ONLY | SWT.V_SCROLL | SWT.MULTI);
-		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblSaleDisplay.setBounds(222, 74, 313, 238);
+		lblSaleDisplay.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblSaleDisplay.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblSaleDisplay.setBounds(255, 87, 373, 411);
 
 		Label lblAntal = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblAntal.setBounds(10, 23, 62, 15);
-		lblAntal.setText("Amount");
+		lblAntal.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblAntal.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblAntal.setBounds(16, 18, 62, 22);
+		lblAntal.setText(" Amount");
 
 		Label lblVarunr = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblVarunr.setBounds(78, 23, 55, 15);
-		lblVarunr.setText("ItemNr");
+		lblVarunr.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblVarunr.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblVarunr.setBounds(85, 18, 55, 22);
+		lblVarunr.setText(" ItemNr");
 
 		antalText = new Text(shlDigitcashierCashRegister, SWT.BORDER);
-		antalText.setBounds(11, 44, 35, 25);
-		antalText.setText("1");
+		antalText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		antalText.setBounds(16, 43, 35, 31);
 
 		varuNrText = new Text(shlDigitcashierCashRegister, SWT.BORDER | SWT.RIGHT);
+		varuNrText.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		varuNrText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				String testString = varuNrText.getText();
@@ -122,9 +129,10 @@ public class CashRegisterWindow {
 
 
 		});
-		varuNrText.setBounds(78, 44, 55, 25);
+		varuNrText.setBounds(85, 43, 55, 31);
 
 		Button btnEnter = new Button(shlDigitcashierCashRegister, SWT.NONE);
+		btnEnter.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		btnEnter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -183,26 +191,33 @@ public class CashRegisterWindow {
 				CashRegister.setTotal(sum);
 			}
 		});
-		btnEnter.setBounds(139, 44, 75, 25);
+		btnEnter.setBounds(160, 43, 75, 31);
 		btnEnter.setText("Enter");
 
 		Label lblNewLabel_1 = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblNewLabel_1.setBounds(220, 23, 71, 16);
+		lblNewLabel_1.setForeground(SWTResourceManager.getColor(0, 0, 0));
+		lblNewLabel_1.setFont(SWTResourceManager.getFont("Segoe UI", 14, SWT.BOLD));
+		lblNewLabel_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND));
+		lblNewLabel_1.setBounds(265, 10, 69, 29);
 		lblNewLabel_1.setText("Display");
 
 		Combo betalningsmedel = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY); //drop-down menu to choose payment method SH
+		betalningsmedel.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		betalningsmedel.setItems(new String[] {"Creditcard", "Cash", "Giftcard"});
-		betalningsmedel.setBounds(10, 208, 96, 23);
+		betalningsmedel.setBounds(16, 357, 112, 31);
 		betalningsmedel.select(0);
 		betalningsmedel.setText("Payment Method");
 
 		Label lblBetalningsmedel = new Label(shlDigitcashierCashRegister, SWT.NONE); //label above drop-down menu
-		lblBetalningsmedel.setText("Payment Method");
-		lblBetalningsmedel.setBounds(10, 187, 96, 15);
+		lblBetalningsmedel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblBetalningsmedel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblBetalningsmedel.setText(" Choose Payment Method");
+		lblBetalningsmedel.setBounds(16, 326, 172, 23);
 
 		Button btnKpKlart = new Button(shlDigitcashierCashRegister, SWT.NONE); //Pressed when confirming customer payment SH
-		btnKpKlart.setBounds(113, 206, 75, 25);
-		btnKpKlart.setText("Finalize Sale");
+		btnKpKlart.setFont(SWTResourceManager.getFont("Segoe UI", 15, SWT.BOLD));
+		btnKpKlart.setBounds(16, 430, 219, 68);
+		btnKpKlart.setText("Finalize \r\nSale");
 		btnKpKlart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -242,17 +257,21 @@ public class CashRegisterWindow {
 
 
 		Label lblRabbater = new Label(shlDigitcashierCashRegister, SWT.NONE);           //start of discount /SH
-		lblRabbater.setText("Discount");
-		lblRabbater.setBounds(11, 87, 96, 15);
+		lblRabbater.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblRabbater.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblRabbater.setText(" Discount");
+		lblRabbater.setBounds(16, 122, 65, 23);
 
 		Combo discountlist = new Combo(shlDigitcashierCashRegister, SWT.READ_ONLY);
+		discountlist.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		discountlist.setItems(new String[] {"20% discount", "-50kr"});
-		discountlist.setBounds(11, 108, 95, 23);
+		discountlist.setBounds(16, 151, 131, 31);
 		discountlist.setText("Rabatter");
 		discountlist.select(0);
 
 		Button rabbutton = new Button(shlDigitcashierCashRegister, SWT.NONE);
-		rabbutton.setBounds(113, 108, 75, 25);
+		rabbutton.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
+		rabbutton.setBounds(160, 151, 75, 31);
 		rabbutton.setText("Apply");
 
 		rabbutton.addMouseListener(new MouseAdapter() {
@@ -265,14 +284,18 @@ public class CashRegisterWindow {
 
 		//start change calculation /SH
 		changeInput = new Text(shlDigitcashierCashRegister, SWT.BORDER); //input field for payment received from customer
-		changeInput.setBounds(10, 160, 76, 21);
+		changeInput.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		changeInput.setBounds(16, 254, 112, 31);
 
 		Label lblVxel = new Label(shlDigitcashierCashRegister, SWT.NONE);
-		lblVxel.setText("Amount Paid");
-		lblVxel.setBounds(10, 139, 96, 15);
+		lblVxel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblVxel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		lblVxel.setText(" Amount Paid");
+		lblVxel.setBounds(16, 225, 96, 23);
 
 		Button btncalculate = new Button(shlDigitcashierCashRegister, SWT.NONE);
-		btncalculate.setBounds(113, 158, 75, 25);
+		btncalculate.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
+		btncalculate.setBounds(160, 254, 75, 31);
 		btncalculate.setText("Calculate");
 		
 		
