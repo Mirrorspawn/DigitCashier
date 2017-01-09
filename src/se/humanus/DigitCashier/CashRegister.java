@@ -4,7 +4,6 @@ import java.text.ParsePosition;
 import java.util.*;
 
 public class CashRegister {
-	private static final int itemID = 0;
 	static String orgName="Acme Foods", orgNr="5560398800";
 	static List<ItemCategory> categoryList = new ArrayList<>();
 	static List<Item> itemList = new ArrayList<>();

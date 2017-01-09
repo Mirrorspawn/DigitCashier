@@ -7,7 +7,6 @@ public class Item {
 	private String idNr; // unique identifying two-digit number
 	private String name; // the name of the item
 	private double price; // the price of the item
-	private double discountModifier=1.0; //The number you have to multiply the price by to get the discounted price
 	private ItemCategory myCategory; //The category this item belongs to
 	
 	public void assignToCategory(ItemCategory ic) {
@@ -27,10 +26,6 @@ public class Item {
 	
 	public String getName() {
 		return name;
-		}
-	
-	public double getDiscount() {
-		return discountModifier;
 		}
 	
 	public ItemCategory getMyCategory() {
