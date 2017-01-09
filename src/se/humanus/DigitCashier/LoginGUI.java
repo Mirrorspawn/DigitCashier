@@ -85,7 +85,7 @@ public class LoginGUI {
 						Login.startApplication("Cashier");						
 					}
 					else{
-						invalidPassword.setText("Invalid login-code");	
+						invalidPassword.setText("Invalid Password");	
 					}
 				}
 				else if (username.equals("Admin")){
@@ -96,7 +96,7 @@ public class LoginGUI {
 
 					}
 					else{
-						invalidPassword.setText("Invalid login-code");
+						invalidPassword.setText("Invalid Password");
 					}
 
 				}
@@ -108,7 +108,7 @@ public class LoginGUI {
 
 					}	
 					else{
-						invalidPassword.setText("Invalid login-code");
+						invalidPassword.setText("Invalid Password");
 					}
 
 				}
