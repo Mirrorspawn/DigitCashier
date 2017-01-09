@@ -18,8 +18,9 @@ public class LoginGUI {
 	protected Shell LoginWindow;
 	private Text usernameField;
 	private Text passwordField;
-
+	
 	CashRegisterWindow cashRegisterGUI = new CashRegisterWindow();
+	
 
 
 	/**
@@ -71,9 +72,6 @@ public class LoginGUI {
 		usernameField = new Text(LoginWindow, SWT.BORDER);
 		usernameField.setBounds(54, 43, 141, 32);
 
-		passwordField = new Text(LoginWindow, SWT.BORDER);
-		passwordField.setBounds(54, 95, 141, 32);
-
 		Button btnLogin = new Button(LoginWindow, SWT.NONE);
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
@@ -87,7 +85,7 @@ public class LoginGUI {
 						Login.startApplication("Cashier");						
 					}
 					else{
-						invalidPassword.setText("Invalid Password");	
+						invalidPassword.setText("Invalid login-code");	
 					}
 				}
 				else if (username.equals("Admin")){
@@ -122,7 +120,9 @@ public class LoginGUI {
 		});
 		btnLogin.setBounds(75, 156, 75, 25);
 		btnLogin.setText("Login");
+		
+		passwordField = new Text(LoginWindow, SWT.BORDER);
+		passwordField.setBounds(54, 102, 141, 32);
 
 	}
-
 }
